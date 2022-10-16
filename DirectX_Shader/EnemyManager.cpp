@@ -17,7 +17,7 @@ void EnemyManager::Config()
 
 		if (i % 3 != 0) {
 			Enemy* enemy = ManagerScene::GetInstance()->GetCurrentScene()->AddGameObject<Enemy>(e3DObject);
-			enemy->SetInitPosition(D3DXVECTOR3(rand30000(mt) - 15000.0f, rand2000(mt), rand30000(mt) - 15000.0f));
+			enemy->SetInitPosition(D3DXVECTOR3((float)rand30000(mt) - 15000.0f, (float)rand2000(mt), (float)rand30000(mt) - 15000.0f));
 			//enemy->SetInitPosition(D3DXVECTOR3(500.0f, 10.0f, 1000.0f));
 			enemy->SetInitScale(D3DXVECTOR3(6.0f, 6.0f, 6.0f));
 			enemy->Config();
@@ -25,7 +25,7 @@ void EnemyManager::Config()
 		}
 		else {
 			EnemyNewCarrier* enemy = ManagerScene::GetInstance()->GetCurrentScene()->AddGameObject<EnemyNewCarrier>(e3DObject);
-			enemy->SetInitPosition(D3DXVECTOR3(rand30000(mt) - 15000.0f, -10.0f, rand30000(mt) - 15000.0f));
+			enemy->SetInitPosition(D3DXVECTOR3((float)rand30000(mt) - 15000.0f, -10.0f, (float)rand30000(mt) - 15000.0f));
 			//enemy->SetInitPosition(D3DXVECTOR3(0.0f, 10.0f, 100.0f));
 			enemy->SetInitScale(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
 			enemy->Config();

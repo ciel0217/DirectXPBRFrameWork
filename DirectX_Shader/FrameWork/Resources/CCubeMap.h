@@ -9,7 +9,7 @@
 class CBuffer;
 class CCubeMap : public CGameObject3D{
 
-	D3DXVECTOR3 forward[6] =
+	const D3DXVECTOR3 forward[6] =
 	{
 		{ 1, 0, 0 },
 		{ -1, 0, 0},
@@ -19,7 +19,7 @@ class CCubeMap : public CGameObject3D{
 		{ 0, 0, -1},
 	};
 
-	D3DXVECTOR3 up[6] =
+	const D3DXVECTOR3 up[6] =
 	{
 		{ 0, 1, 0},
 		{ 0, 1, 0},

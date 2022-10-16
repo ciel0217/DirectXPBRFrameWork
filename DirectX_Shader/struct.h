@@ -46,12 +46,12 @@ enum FILTER_MODE
 
 enum SCENE_TEXTURE 
 {
-	eBaseColor = 0,
+	eAlbedo = 0,
 	eNormal,
 	eRoughnessAndMeralicAndSpecular,
 	eEmmision,
 
-	eToneMap,
+	eIntermediate,
 	eSceneMax,
 };
 

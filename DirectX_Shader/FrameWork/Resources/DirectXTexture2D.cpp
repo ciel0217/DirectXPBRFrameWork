@@ -51,7 +51,7 @@ DirectXTexture2D * DirectXTexture2D::CreateTextureCube(int size, DXGI_FORMAT tex
 	textureDesc.Width = size;
 	textureDesc.Height = size;
 	textureDesc.MipLevels = mipLevels;
-	textureDesc.ArraySize = 6; // 6 faces
+	textureDesc.ArraySize = 6; // 6(—§•û‘Ì‚¾‚©‚ç)
 	textureDesc.Format = texFormat;
 	textureDesc.SampleDesc.Count = 1;
 	textureDesc.Usage = D3D11_USAGE_DEFAULT;
@@ -85,7 +85,8 @@ bool DirectXTexture2D::CreateSRV(DXGI_FORMAT texFormat, D3D11_SRV_DIMENSION view
 		srvDesc.Texture2D.MostDetailedMip = 0;
 		srvDesc.Texture2D.MipLevels = mipLevels;
 	}
-	// Create the shader resource view.
+
+	// SRVì¬
 	HRESULT result = CDxRenderer::GetRenderer()->GetDevice()->CreateShaderResourceView(m_Texture.Get(), &srvDesc, &m_TextureSRV);
 	
 	return SUCCEEDED(result);
@@ -139,6 +140,20 @@ bool DirectXTexture2D::CreateDSV(DXGI_FORMAT texFormat)
 
 	HRESULT result = CDxRenderer::GetRenderer()->GetDevice()->CreateDepthStencilView(m_Texture.Get(), &dsvDesc, &m_TextureDSV);
 	
+	return SUCCEEDED(result);
+}
+
+bool DirectXTexture2D::CreateUAV(DXGI_FORMAT texFormat, UINT mipLevels)
+{
+	D3D11_UNORDERED_ACCESS_VIEW_DESC uavDesc;
+	ZeroMemory(&uavDesc, sizeof(D3D11_UNORDERED_ACCESS_VIEW_DESC));
+
+	uavDesc.Format = texFormat;
+	uavDesc.ViewDimension = D3D11_UAV_DIMENSION_TEXTURE2D;
+	uavDesc.Texture2D.MipSlice = mipLevels;
+
+	HRESULT result = CDxRenderer::GetRenderer()->GetDevice()->CreateUnorderedAccessView(m_Texture.Get(), &uavDesc, &m_TextureUAV);
+
 	return SUCCEEDED(result);
 }
 

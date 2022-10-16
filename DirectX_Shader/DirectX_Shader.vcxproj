@@ -84,8 +84,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>..\DirectX_Shader\DirectX_Shader;\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(IncludePath)</IncludePath>
@@ -179,7 +179,7 @@
     <ClInclude Include="FrameWork\Resources\Camera.h" />
     <ClInclude Include="FrameWork\Resources\CBuffer.h" />
     <ClInclude Include="FrameWork\Resources\CCollision.h" />
-    <ClInclude Include="FrameWork\Resources\ccollisiondetection.h" />
+    <ClInclude Include="FrameWork\Resources\CCollisionDetection.h" />
     <ClInclude Include="FrameWork\Resources\CCubeMap.h" />
     <ClInclude Include="FrameWork\Resources\CGameObject.h" />
     <ClInclude Include="FrameWork\Resources\CLight.h" />
@@ -268,7 +268,6 @@
     <ClCompile Include="FrameWork\Resources\CommonProcess.cpp" />
     <ClCompile Include="FrameWork\Resources\CPostProcess.cpp" />
     <ClCompile Include="FrameWork\Resources\CScene.cpp" />
-    <ClCompile Include="FrameWork\Resources\CShader.cpp" />
     <ClCompile Include="FrameWork\Resources\DirectionalLight.cpp" />
     <ClCompile Include="FrameWork\Resources\DirectXTexture2D.cpp" />
     <ClCompile Include="FrameWork\Resources\Particle.cpp" />

@@ -47,16 +47,24 @@ void DeferredRenderer::Draw()
 	m_DeferredCBuffer->UpdateBuffer(&m_CBufferValue);
 	m_DeferredCBuffer->PSSetCBuffer(9);
 
-	RenderTarget color = CDxRenderer::GetRenderer()->GetSceneTexture(eBaseColor);
+	DirectXTexture2D* color = CDxRenderer::GetRenderer()->GetSceneTexture(eAlbedo);
+	DirectXTexture2D* normal = CDxRenderer::GetRenderer()->GetSceneTexture(eNormal);
+	DirectXTexture2D* rough_meta_spe = CDxRenderer::GetRenderer()->GetSceneTexture(eRoughnessAndMeralicAndSpecular);
+	DirectXTexture2D* emmision = CDxRenderer::GetRenderer()->GetSceneTexture(eEmmision);
+	/*RenderTarget color = CDxRenderer::GetRenderer()->GetSceneTexture(eBaseColor);
 	RenderTarget normal = CDxRenderer::GetRenderer()->GetSceneTexture(eNormal);
 	RenderTarget rough_meta_spe = CDxRenderer::GetRenderer()->GetSceneTexture(eRoughnessAndMeralicAndSpecular);
-	RenderTarget emmision = CDxRenderer::GetRenderer()->GetSceneTexture(eEmmision);
+	RenderTarget emmision = CDxRenderer::GetRenderer()->GetSceneTexture(eEmmision);*/
 
 
-	ID3D11ShaderResourceView* t0 = color.ShaderResourceView.Get();
+	/*ID3D11ShaderResourceView* t0 = color.ShaderResourceView.Get();
 	ID3D11ShaderResourceView* t1 = normal.ShaderResourceView.Get();
 	ID3D11ShaderResourceView* t2 = rough_meta_spe.ShaderResourceView.Get();
-	ID3D11ShaderResourceView* t3 = emmision.ShaderResourceView.Get();
+	ID3D11ShaderResourceView* t3 = emmision.ShaderResourceView.Get();*/
+	ID3D11ShaderResourceView * t0 = color->GetSRV();
+	ID3D11ShaderResourceView* t1 = normal->GetSRV();
+	ID3D11ShaderResourceView* t2 = rough_meta_spe->GetSRV();
+	ID3D11ShaderResourceView* t3 = emmision->GetSRV();
 
 	ID3D11ShaderResourceView* t4 = CDxRenderer::GetRenderer()->GetDepthStencilSRV();
 

@@ -2,8 +2,8 @@
 
 #include "DirectX.h"
 #include "../../struct.h"
+#include "../Resources/DirectXTexture2D.h"
 
-//#include "DirectX_Shader/FrameWork/Resources/CCubeMap.h"
 
 #include <string>
 
@@ -47,8 +47,9 @@ private:
 	
 	ID3D11Texture2D* m_DepthTexture = NULL;
 
-	//0 : color 1 : Normal, 2 : r:roughness g:metaric b:specular 3:Emission + (lightmaps) 4 中間バッファー
+	//0 : Albedo 1 : Normal, 2 : r:roughness g:metaric b:specular 3:Emission + (lightmaps) 4 中間バッファー
 	RenderTarget m_RenderTargets[RENDER_TARGET_NUM + 1];
+	DirectXTexture2D* m_RenderTarggers[RENDER_TARGET_NUM + 1];
 
 	ID3D11RenderTargetView* m_Rtv[RENDER_TARGET_NUM];
 	ID3D11RenderTargetView* m_IntermediateRtv;
@@ -119,7 +120,7 @@ public:
 
 	void Present();
 
-	RenderTarget GetSceneTexture(SCENE_TEXTURE tex) { return m_RenderTargets[tex]; }
+	DirectXTexture2D* GetSceneTexture(SCENE_TEXTURE tex) { return m_RenderTarggers[tex]; }
 };
 
 

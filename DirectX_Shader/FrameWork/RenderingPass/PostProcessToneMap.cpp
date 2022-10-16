@@ -29,10 +29,8 @@ void PostProcessToneMap::Draw()
 	CDxRenderer::GetRenderer()->SetPixelShader(m_Shader->GetShaderPS().Get());
 	CDxRenderer::GetRenderer()->GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
-
-	RenderTarget tonemap = CDxRenderer::GetRenderer()->GetSceneTexture(eToneMap);
-	ID3D11ShaderResourceView* a = CDxRenderer::GetRenderer()->GetDepthStencilSRV();
-	ID3D11ShaderResourceView* t0 = tonemap.ShaderResourceView.Get();
+	DirectXTexture2D* tonemap = CDxRenderer::GetRenderer()->GetSceneTexture(eIntermediate);
+	ID3D11ShaderResourceView* t0 = tonemap->GetSRV();
 	
 	CDxRenderer::GetRenderer()->GetDeviceContext()->PSSetShaderResources(0, 1, &t0);
 

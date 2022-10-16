@@ -7,7 +7,6 @@ class CCollisionDetection
 {
 
 
-
 public:
 	CCollisionDetection() {};
 	virtual ~CCollisionDetection(){};

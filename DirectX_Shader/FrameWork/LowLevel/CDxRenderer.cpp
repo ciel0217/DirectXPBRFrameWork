@@ -62,79 +62,21 @@ HRESULT CDxRenderer::InitRenderer()
 
 	//マルチパスレンダーターゲット
 	for (int i = 0; i < RENDER_TARGET_NUM + 1; i++) {
-		RenderTarget& renderTarget = m_RenderTargets[i];
-
-		D3D11_TEXTURE2D_DESC textureDesc;
-		D3D11_RENDER_TARGET_VIEW_DESC renderTargetViewDesc;
-		D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
-		D3D11_UNORDERED_ACCESS_VIEW_DESC uavDesc;
-
-		ZeroMemory(&textureDesc, sizeof(D3D11_TEXTURE2D_DESC));
-		ZeroMemory(&renderTargetViewDesc, sizeof(D3D11_RENDER_TARGET_VIEW_DESC));
-		ZeroMemory(&srvDesc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
-		ZeroMemory(&uavDesc, sizeof(D3D11_UNORDERED_ACCESS_VIEW_DESC));
-
-		// 1. Create texture
-		textureDesc.Width = sd.BufferDesc.Width;
-		textureDesc.Height = sd.BufferDesc.Height;
-		textureDesc.MipLevels = 1;
-		textureDesc.ArraySize = 1;
-		textureDesc.Format = DXGI_FORMAT_R16G16B16A16_FLOAT;
-		textureDesc.SampleDesc.Count = 1;
-		textureDesc.Usage = D3D11_USAGE_DEFAULT;
-		textureDesc.BindFlags = D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS;
-		textureDesc.CPUAccessFlags = 0;
-		textureDesc.MiscFlags = 0;
-
-		hr = m_D3DDevice->CreateTexture2D(&textureDesc, NULL, &renderTarget.RenderTargetTexture);
-		if (FAILED(hr))
-		{
-		
-			return hr;
-		}
-
-		// 2. Create render target view
-		renderTargetViewDesc.Format = textureDesc.Format;
-		renderTargetViewDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
-		renderTargetViewDesc.Texture2D.MipSlice = 0;
-
-		hr = m_D3DDevice->CreateRenderTargetView(renderTarget.RenderTargetTexture.Get(), &renderTargetViewDesc, &renderTarget.RenderTargetView);
-		if (FAILED(hr))
-		{
-			return hr;
-		}
-
-		// 3. Create SRV
-		srvDesc.Format = textureDesc.Format;
-		srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
-		srvDesc.Texture2D.MostDetailedMip = 0;
-		srvDesc.Texture2D.MipLevels = 1;
-
-		hr = m_D3DDevice->CreateShaderResourceView(renderTarget.RenderTargetTexture.Get(), &srvDesc, &renderTarget.ShaderResourceView);
-		if (FAILED(hr))
-		{
-			
-			return hr;
-		}
-
-		// 4. Create UAV
-		uavDesc.Format = DXGI_FORMAT_R16G16B16A16_FLOAT;
-		uavDesc.ViewDimension = D3D11_UAV_DIMENSION_TEXTURE2D;
-		uavDesc.Texture2D.MipSlice = 0;
-
-		hr = m_D3DDevice->CreateUnorderedAccessView(renderTarget.RenderTargetTexture.Get(), &uavDesc, &renderTarget.UnorderedAccessView);
-		if (FAILED(hr))
-		{
-			return hr;
-		}
+		m_RenderTarggers[i] = DirectXTexture2D::CreateTexture(sd.BufferDesc.Width, sd.BufferDesc.Height,
+			DXGI_FORMAT_R16G16B16A16_FLOAT, D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+		m_RenderTarggers[i]->CreateSRV(DXGI_FORMAT_R16G16B16A16_FLOAT);
+		m_RenderTarggers[i]->CreateRTV(DXGI_FORMAT_R16G16B16A16_FLOAT);
+		m_RenderTarggers[i]->CreateUAV(DXGI_FORMAT_R16G16B16A16_FLOAT);
 	}
 
+	//マルチパスレンダーターゲットを設定しやすくするためにRTVだけ取り出しておく
 	for (int i = 0; i < RENDER_TARGET_NUM; i++) {
-		m_Rtv[i] = m_RenderTargets[i].RenderTargetView.Get();
+		m_Rtv[i] = m_RenderTarggers[i]->GetRTV();
 	}
 
-	m_IntermediateRtv = m_RenderTargets[RENDER_TARGET_NUM].RenderTargetView.Get();
-
+	//中間バッファー(PostEffect用)
+	m_IntermediateRtv = m_RenderTarggers[RENDER_TARGET_NUM]->GetRTV();
+	
 	//ステンシル用テクスチャー作成
 	D3D11_TEXTURE2D_DESC td;
 	ZeroMemory(&td, sizeof(td));

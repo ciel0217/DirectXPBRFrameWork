@@ -14,20 +14,18 @@ public:
 	bool CreateRTV(DXGI_FORMAT texFormat);
 	bool CreateTextureCubeRTVs(DXGI_FORMAT texFormat, UINT mipLevels = 1);
 	bool CreateDSV(DXGI_FORMAT texFormat);
+	bool CreateUAV(DXGI_FORMAT texFormat, UINT mipLevels = 0);
 
 	ID3D11RenderTargetView* GetRTV(UINT index = 0) { return m_TextureRTVs[index].Get(); }
 	ID3D11RenderTargetView** GetRTVPointerToPointer(UINT index = 0) { return m_TextureRTVs[index].GetAddressOf(); }
 	ID3D11ShaderResourceView* GetSRV() {return  m_TextureSRV.Get(); }
 
-
-
+	
+private:
+	std::string m_Name;
+	std::vector<Microsoft::WRL::ComPtr<ID3D11RenderTargetView>> m_TextureRTVs;
 	Microsoft::WRL::ComPtr<ID3D11Texture2D> m_Texture;
 	Microsoft::WRL::ComPtr <ID3D11ShaderResourceView> m_TextureSRV;
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_TextureDSV;
-
-
-	std::string m_Name;
-private:
-	std::vector<Microsoft::WRL::ComPtr<ID3D11RenderTargetView>> m_TextureRTVs;
-	
+	Microsoft::WRL::ComPtr<ID3D11UnorderedAccessView> m_TextureUAV;
 };

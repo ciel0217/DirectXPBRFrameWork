@@ -231,9 +231,6 @@
     <ClInclude Include="FrameWork\Resources\CCollision.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="FrameWork\Resources\ccollisiondetection.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="FrameWork\Resources\CCubeMap.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -280,6 +277,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="GameSceneCamera.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameWork\Resources\CCollisionDetection.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -492,9 +492,6 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="FrameWork\Resources\CScene.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="FrameWork\Resources\CShader.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="FrameWork\Resources\DirectionalLight.cpp">

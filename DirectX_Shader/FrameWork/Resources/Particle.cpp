@@ -22,7 +22,7 @@ void Particle::Init()
 	m_Scale = m_InitScale;
 	m_Velocity = m_InitVelocity;
 
-	m_FrameCount = 0.0f;
+	m_FrameCount = 0;
 }
 
 void Particle::Uninit()
