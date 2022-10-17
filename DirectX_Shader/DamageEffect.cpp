@@ -1,6 +1,5 @@
 #include "DamageEffect.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
 
 void DamageEffect::Config()
 {

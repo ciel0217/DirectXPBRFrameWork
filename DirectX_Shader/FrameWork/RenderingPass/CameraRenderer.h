@@ -2,7 +2,7 @@
 #include "../Resources/CommonProcess.h"
 #include "../Resources/ObjectTag.h"
 #include <list>
-#include "../../enum.h"
+#include "../Resources/DevelopEnum.h"
 #include "DeferredRenderer.h"
 #include "../Resources/SkyBox.h"
 #include <string>

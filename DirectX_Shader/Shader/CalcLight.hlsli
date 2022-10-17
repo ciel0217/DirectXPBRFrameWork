@@ -4,26 +4,25 @@ struct SurfaceInfo
 {
 	float4 WorldPosition;
 	float3 Normal;
-	//float3 T;
-	//float3 B;
+	//float3 T; //tangent使ってないからコメントアウトしておく
+	//float3 B; //binormal使ってないからコメントアウトしておく
 	float3 EyeV;
 	float NdotV;
 };
 
 struct LightingInfo
 {
-	// general terms
+	// 共通項
 	float3 LightV;
 
 	float3 HalfV;
 	float NdotH;
 	float NdotL;
 
-	//currently for directional light source
+	//DirectionlLight用
 	float ShadowFactor;
 
-	// for point sources
-	
+	//ポイントライト用
 	float Distance;
 	float Attenuation;
 };
@@ -51,6 +50,8 @@ void CalcSpotLight(SurfaceInfo surf, LIGHT light, inout LightingInfo info)
 	info.Distance = length(info.LightV);
 	info.LightV = normalize(info.LightV);
 	info.Attenuation = 1.0f / (light.ConstantAtt + light.LinearAtt * info.Distance + light.QuadAtt * (info.Distance * info.Distance));
+
+	//未実装
 
 	//float minCos = cos(light.spotAngle);
 	//float maxCos = (minCos + 1.0f) / 2.0f; // squash between [0, 1]

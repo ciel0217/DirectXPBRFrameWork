@@ -3,9 +3,8 @@
 #include "Sprite.h"
 #include "../LowLevel/CDxRenderer.h"
 #include "CShader.h"
-#include "../../enum.h"
-#include "../../quaternion.h"
-
+#include "DevelopEnum.h"
+#include "../../Math/Quaternion.h"
 void Particle::Config()
 {
 	ManagerTexture::LoadTexture(m_TextureName);

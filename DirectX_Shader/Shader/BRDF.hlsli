@@ -23,13 +23,13 @@ float3 ImportanceSampleGGX(float2 st, float3 N, float roughness)
 	float cosTheta = sqrt((1.0 - st.y) / (1.0 + (a * a - 1.0) * st.y));
 	float sinTheta = sqrt(1.0 - cosTheta * cosTheta);
 
-	// from spherical coordinates to cartesian coordinates
+	//　球面座標から直交座標に変換
 	float3 H;
 	H.x = cos(phi) * sinTheta;
 	H.y = sin(phi) * sinTheta;
 	H.z = cosTheta;
 
-	// from tangent-space vector to world-space sample vector
+	// タンジェント空間からワールド空間ベクトルに変換
 	float3 up = abs(N.z) < 0.999 ? float3(0.0, 0.0, 1.0) : float3(1.0, 0.0, 0.0);
 	float3 tangent = normalize(cross(up, N));
 	float3 bitangent = cross(N, tangent);

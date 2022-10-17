@@ -1,6 +1,6 @@
 #include "PressEnterKey.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
+
 
 void PressLKey::Config()
 {

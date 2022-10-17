@@ -1,6 +1,6 @@
 #pragma once
 #include "FrameWork/Resources/CGameObject.h"
-#include "struct.h"
+#include "UserStruct.h"
 
 class CBuffer;
 

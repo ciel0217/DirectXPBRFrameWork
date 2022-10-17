@@ -1,6 +1,6 @@
 #include "UIDestroy.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
+#include "UserEnum.h"
 
 void UIDestroy::Config()
 {

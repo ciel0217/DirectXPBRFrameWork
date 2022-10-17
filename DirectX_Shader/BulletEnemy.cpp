@@ -4,7 +4,6 @@
 #include "FrameWork/Resources/CShader.h"
 #include "FrameWork/Resources/Sprite.h"
 #include "FrameWork/Resources/BoxCollision.h"
-#include "enum.h"
 
 void BulletEnemy::Config()
 {

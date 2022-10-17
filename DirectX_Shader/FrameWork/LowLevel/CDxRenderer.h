@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DirectX.h"
-#include "../../struct.h"
+#include "../Resources/DevelopStruct.h"
 #include "../Resources/DirectXTexture2D.h"
 
 

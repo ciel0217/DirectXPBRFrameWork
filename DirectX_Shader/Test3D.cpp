@@ -3,7 +3,7 @@
 #include "FrameWork/Manager/ManagerInput.h"
 #include "FrameWork/Resources/CShader.h"
 #include <cmath>
-#include "enum.h"
+
 
 void Test3D::Config()
 {

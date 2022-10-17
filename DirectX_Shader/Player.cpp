@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "FrameWork/Manager/ManagerInput.h"
-#include "quaternion.h"
+#include "Math/Quaternion.h"
 #include "FrameWork/Resources/BoxCollision.h"
 #include "Bullet.h"
 #include "FrameWork/Manager/ManagerScene.h"
@@ -199,32 +199,28 @@ void Player::Update()
 			if (ManagerInput::GetInstance()->GetKeyboardPress(DIK_S))
 			{
 				D3DXVECTOR3 axis = Transform(UnitX, m_Rotation);
-				//D3DXQuaternionRotationAxis(&g_Player.rot, &axis, VALUE_ROTATE);
+				
 				m_Rotation = RotateAxis(axis, ROTATION_VALUE, m_Rotation);
 
 			}
 			if (ManagerInput::GetInstance()->GetKeyboardPress(DIK_W))
 			{
 				D3DXVECTOR3 axis = Transform(UnitX, m_Rotation);
-				//D3DXQuaternionRotationAxis(&g_Player.rot, &axis, -1.0f * VALUE_ROTATE);
+			
 				m_Rotation = RotateAxis(axis, -1.0f *  ROTATION_VALUE, m_Rotation);
-				/*g_Player.spd = VALUE_MOVE;
-				g_Rot = D3DX_PI / 2;*/
+				
 			}
 			if (ManagerInput::GetInstance()->GetKeyboardPress(DIK_A))
 			{
-				/*D3DXVECTOR3 axisy = Transform(UnitY, g_Player.rot);
-				g_Player.rot = RotateAxis(axisy, -1.0f * VALUE_ROTATE, g_Player.rot);*/
+				
 				D3DXVECTOR3 axisz = Transform(UnitZ, m_Rotation);
 				m_Rotation = RotateAxis(axisz, ROTATION_VALUE, m_Rotation);
 
-				/*g_Player.spd = VALUE_MOVE;
-				g_Rot = 0.0f;*/
+			
 			}
 			if (ManagerInput::GetInstance()->GetKeyboardPress(DIK_D))
 			{
-				///*D3DXVECTOR3 axisy = Transform(UnitY, g_Player.rot);
-				//g_Player.rot = RotateAxis(axisy,  VALUE_ROTATE, g_Player.rot);*/
+		
 				D3DXVECTOR3 axisz = Transform(UnitZ, m_Rotation);
 				m_Rotation = RotateAxis(axisz, -1.0f * ROTATION_VALUE, m_Rotation);
 
@@ -258,27 +254,20 @@ void Player::OnCollisionEnter(CGameObject3D * collider)
 		DamageEffect* effect = ManagerScene::GetInstance()->GetCurrentScene()->GetGameObject<DamageEffect>(e2DObject);
 		effect->SetActive(true);
 		effect->Init();
-		
+
 		m_Explo = ManagerScene::GetInstance()->GetCurrentScene()->AddGameObject<AnimeExplosion>(e3DObject);
 		m_Explo->SetInitPosition(m_Position);
 		m_Explo->SetInitScale(D3DXVECTOR3(200.0f, 200.0f, 0.0f));
 		m_Explo->Config();
 		m_Explo->Init();
 		m_HP--;
-		if (m_HP <= 0)m_HP = 0;
 
 		if (m_HP <= 0) {
 			m_HP = 0;
 			m_IsActive = false;
-			//m_IsDestroy = true;
-
 			m_Audio->StopAll();
 			m_BulletSE->StopAll();
 			m_RocketSE->StopAll();
-
-
 		}
 	}
-
-	
 }

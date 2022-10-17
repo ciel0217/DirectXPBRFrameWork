@@ -3,7 +3,6 @@
 #include "FrameWork/LowLevel/CDxRenderer.h"
 #include "FrameWork/Resources/CShader.h"
 #include "FrameWork/Resources/Sprite.h"
-#include "enum.h"
 #include "FrameWork/Manager/audio.h"
 
 void TargetMark::Config()

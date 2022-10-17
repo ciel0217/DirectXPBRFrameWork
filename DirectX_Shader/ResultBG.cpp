@@ -1,6 +1,5 @@
 #include "ResultBG.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
 #include "CloseBlackBG.h"
 #include "FrameWork/Manager/ManagerInput.h"
 #include "FrameWork/Manager/ManagerScene.h"

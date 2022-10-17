@@ -1,7 +1,6 @@
 #include "ResultScore.h"
 #include "Score.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
 #include <random>
 #include "FrameWork/LowLevel/CDxRenderer.h"
 #include "FrameWork/Resources/CShader.h"

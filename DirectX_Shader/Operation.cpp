@@ -6,7 +6,6 @@
 #include "FrameWork/Manager/ManagerInput.h"
 #include "TitlePlayer.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
 #include "FrameWork/Resources/CShader.h"
 #include "FrameWork/LowLevel/CDxRenderer.h"
 #include "FrameWork/Resources/Sprite.h"

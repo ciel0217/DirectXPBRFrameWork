@@ -1,5 +1,4 @@
 #include "OperationWeapon.h"
-#include "enum.h"
 #include "FrameWork/Manager/ManagerTexture.h"
 #include "FrameWork/Manager/ManagerInput.h"
 #include "FrameWork/Manager/ManagerScene.h"

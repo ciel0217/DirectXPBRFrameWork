@@ -1,6 +1,6 @@
 #include "MissionMessage.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
+
 
 void MissionMessage::Config()
 {

@@ -1,6 +1,5 @@
 #include "RaderPoint.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
 
 void RaderPoint::Config()
 {

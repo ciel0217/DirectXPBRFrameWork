@@ -5,8 +5,7 @@
 #include "FrameWork/Resources/Sprite.h"
 #include "FrameWork/Manager/ManagerScene.h"
 #include "Player.h"
-#include "quaternion.h"
-#include "enum.h"
+#include "Math/Quaternion.h"
 
 void Reticle::Config()
 {

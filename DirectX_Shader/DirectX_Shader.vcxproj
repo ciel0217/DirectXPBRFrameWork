@@ -156,7 +156,6 @@
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EnemyNewCarrier.h" />
     <ClInclude Include="EnemyRocket.h" />
-    <ClInclude Include="enum.h" />
     <ClInclude Include="FrameWork\LowLevel\CDxMainApplication.h" />
     <ClInclude Include="FrameWork\LowLevel\CDxRenderer.h" />
     <ClInclude Include="FrameWork\LowLevel\CDxWindow.h" />
@@ -188,6 +187,8 @@
     <ClInclude Include="FrameWork\Resources\CScene.h" />
     <ClInclude Include="FrameWork\Resources\CShader.h" />
     <ClInclude Include="FrameWork\Resources\CTransform.h" />
+    <ClInclude Include="FrameWork\Resources\DevelopEnum.h" />
+    <ClInclude Include="FrameWork\Resources\DevelopStruct.h" />
     <ClInclude Include="FrameWork\Resources\DirectionalLight.h" />
     <ClInclude Include="FrameWork\Resources\DirectXTexture2D.h" />
     <ClInclude Include="FrameWork\Resources\ObjectTag.h" />
@@ -198,6 +199,7 @@
     <ClInclude Include="GameSceneCamera.h" />
     <ClInclude Include="HudBullet.h" />
     <ClInclude Include="Lose.h" />
+    <ClInclude Include="Math\Quaternion.h" />
     <ClInclude Include="MissileAlert.h" />
     <ClInclude Include="MissionMessage.h" />
     <ClInclude Include="Ocean.h" />
@@ -209,7 +211,6 @@
     <ClInclude Include="Pause.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PressEnterKey.h" />
-    <ClInclude Include="quaternion.h" />
     <ClInclude Include="Rader.h" />
     <ClInclude Include="RaderPoint.h" />
     <ClInclude Include="ResultBG.h" />
@@ -222,7 +223,6 @@
     <ClInclude Include="Rocket.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="Sousasetumei.h" />
-    <ClInclude Include="struct.h" />
     <ClInclude Include="TargetMark.h" />
     <ClInclude Include="Test3D.h" />
     <ClInclude Include="TestScene.h" />
@@ -233,6 +233,7 @@
     <ClInclude Include="TitleSceneCamera.h" />
     <ClInclude Include="UIDestroy.h" />
     <ClInclude Include="UIPitchUp.h" />
+    <ClInclude Include="UserStruct.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnimeExplosion.cpp" />
@@ -277,6 +278,7 @@
     <ClCompile Include="GameSceneCamera.cpp" />
     <ClCompile Include="HudBullet.cpp" />
     <ClCompile Include="Lose.cpp" />
+    <ClCompile Include="Math\Quaternion.cpp" />
     <ClCompile Include="MissileAlert.cpp" />
     <ClCompile Include="MissionMessage.cpp" />
     <ClCompile Include="Ocean.cpp" />
@@ -288,7 +290,6 @@
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PressEnterKey.cpp" />
-    <ClCompile Include="quaternion.cpp" />
     <ClCompile Include="Rader.cpp" />
     <ClCompile Include="RaderPoint.cpp" />
     <ClCompile Include="ResultBG.cpp" />

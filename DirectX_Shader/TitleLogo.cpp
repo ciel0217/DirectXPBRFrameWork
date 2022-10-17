@@ -1,6 +1,5 @@
 #include "TitleLogo.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
 #include "FrameWork/Manager/audio.h"
 
 void TitleLogo::Config()

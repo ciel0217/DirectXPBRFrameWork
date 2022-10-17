@@ -1,6 +1,6 @@
 #include "TitlePlayer.h"
 #include "FrameWork/Manager/ManagerInput.h"
-#include "quaternion.h"
+#include "Math/Quaternion.h"
 #include "FrameWork/Manager/ManagerScene.h"
 #include "CloseBlackBG.h"
 #include "TestScene.h"

@@ -1,6 +1,6 @@
 #pragma once
 #include "ObjectTag.h"
-#include "../../enum.h"
+#include "DevelopEnum.h"
 
 class CGameObject3D;
 

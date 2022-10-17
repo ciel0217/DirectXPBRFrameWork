@@ -1,6 +1,6 @@
 #pragma once
 #include "FrameWork/Resources/CGameObject.h"
-#include "enum.h"
+#include "UserEnum.h"
 
 class TargetMark;
 class AnimeExplosion;

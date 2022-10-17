@@ -47,23 +47,6 @@ cbuffer InverseWorldBuffer : register(b6)
 	matrix InverseWorld;
 }
 
-//// ライト用バッファ
-//struct LIGHT
-//{
-//	float4		Direction[10];
-//	float4		Position[10];
-//	float4		Diffuse[10];
-//	float4		Ambient[10];
-//	float4		Attenuation[10];
-//	int4		Flags[10];
-//	int			Enable;
-//	int			Dummy[3];//16byte境界用
-//};
-//
-//cbuffer LightBuffer : register(b4)
-//{
-//	LIGHT		Light;
-//}
 
 struct Output_VS 
 {
@@ -106,8 +89,6 @@ Output_VS VS_main(in  float3 inPosition		: POSITION0,
 	worldNormal = normalize(worldNormal);
 	output.normal = worldNormal.xyz;
 	
-	//output.normal = normalize(mul(inNormal, (float3x3)InverseWorld).xyz);
-	//output.normal = normalize(mul(World, float4(inNormal, 0.0)).xyz);
 	
 	output.texcoord = inTexCoord;
 

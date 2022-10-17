@@ -1,6 +1,6 @@
 #include "ManagerLight.h"
 #include "../Resources/CBuffer.h"
-#include "../../struct.h"
+#include "../Resources/DevelopStruct.h"
 #include "../LowLevel/CDxRenderer.h"
 
 ManagerLight::ManagerLight()

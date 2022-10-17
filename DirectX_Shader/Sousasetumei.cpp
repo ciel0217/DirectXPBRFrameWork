@@ -1,6 +1,6 @@
 #include "Sousasetumei.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
+
 
 void Sousasetumei::Config()
 {

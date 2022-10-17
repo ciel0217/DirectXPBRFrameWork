@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
-#include "../../struct.h"
+#include "../Resources/DevelopStruct.h"
 #include "../LowLevel/DirectX.h"
 
 #define SHADER_MAX 10

@@ -1,6 +1,5 @@
 #include "TitleExplain.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
 #include "FrameWork/Manager/ManagerInput.h"
 #include "OpetationExplain.h"
 

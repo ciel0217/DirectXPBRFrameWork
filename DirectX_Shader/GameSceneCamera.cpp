@@ -6,7 +6,7 @@
 #include "Player.h"
 #include "FrameWork/Manager/ManagerScene.h"
 
-#include "quaternion.h"
+#include "Math/Quaternion.h"
 
 void GameSceneCamera::Init()
 {

@@ -1,5 +1,4 @@
 #include "MissileAlert.h"
-#include "enum.h"
 #include "FrameWork/Manager/ManagerTexture.h"
 
 void MissileAlert::Config()

@@ -68,7 +68,7 @@ BOOL CDxMainApplication::CreateMainWnd()
 	//TODO‚¿‚á‚ñ‚ÆƒGƒ‰[ˆ—
 	HRESULT hr = m_DxWindow->CreateMainWindow();
 	if (hr == S_OK)return 1;
-	return 1;
+	return -1;
 }
 
 BOOL CDxMainApplication::Initialize()

@@ -1,6 +1,5 @@
 #include "OpenBlackBG.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
 
 void OpenBlackBG::Config()
 {

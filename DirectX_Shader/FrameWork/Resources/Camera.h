@@ -2,7 +2,7 @@
 #include "CommonProcess.h"
 #include "ObjectTag.h"
 #include <list>
-#include "../../enum.h"
+#include "DevelopEnum.h"
 #include "CPostProcess.h"
 #include "../RenderingPass/DeferredRenderer.h"
 #include "SkyBox.h"

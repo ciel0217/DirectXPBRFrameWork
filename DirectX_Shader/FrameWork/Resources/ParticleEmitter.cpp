@@ -1,9 +1,9 @@
 #include "ParticleEmitter.h"
-#include "../../enum.h"
+#include "DevelopEnum.h"
 #include "CGameObject.h"
 #include "Particle.h"
 #include <algorithm>
-#include "../../quaternion.h"
+#include "../../Math/Quaternion.h"
 
 void ParticleEmitter::Config()
 {

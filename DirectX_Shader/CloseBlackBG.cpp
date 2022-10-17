@@ -1,6 +1,5 @@
 #include "CloseBlackBG.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
 
 void CloseBlackBG::Config()
 {

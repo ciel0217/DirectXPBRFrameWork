@@ -1,6 +1,6 @@
 #pragma once
-#include "DirectX_Shader/FrameWork/RenderingPass/CRenderInfo.h"
-#include "DirectX_Shader/FrameWork/Resources/CTransform.h"
+#include "../RenderingPass/CRenderInfo.h"
+#include "../Resources/CTransform.h"
 
 class CCollision;
 

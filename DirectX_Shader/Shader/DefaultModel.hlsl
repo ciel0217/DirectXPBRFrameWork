@@ -43,23 +43,7 @@ cbuffer MaterialBuffer : register(b3)
 	MATERIAL	Material;
 }
 
-//// ライト用バッファ
-//struct LIGHT
-//{
-//	float4		Direction[10];
-//	float4		Position[10];
-//	float4		Diffuse[10];
-//	float4		Ambient[10];
-//	float4		Attenuation[10];
-//	int4		Flags[10];
-//	int			Enable;
-//	int			Dummy[3];//16byte境界用
-//};
-//
-//cbuffer LightBuffer : register(b4)
-//{
-//	LIGHT		Light;
-//}
+
 
 struct Output_VS
 {

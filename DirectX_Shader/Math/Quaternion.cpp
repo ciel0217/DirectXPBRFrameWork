@@ -1,7 +1,8 @@
-#include "quaternion.h"
+#include "Quaternion.h"
 #include <math.h>
 
 D3DXQUATERNION AngleAxis(float angle, D3DXVECTOR3 axis);
+
 
 D3DXVECTOR3 Transform(const D3DXVECTOR3 vec, const D3DXQUATERNION qua) {
 	float x = qua.x + qua.x;
@@ -22,6 +23,7 @@ D3DXVECTOR3 Transform(const D3DXVECTOR3 vec, const D3DXQUATERNION qua) {
 		((vec.x * (xy + wz)) + (vec.y * ((1.0f - xx) - zz))) + (vec.z * (yz - wx)),
 		((vec.x * (xz - wy)) + (vec.y * (yz + wx))) + (vec.z * ((1.0f - xx) - yy)));
 }
+
 
 D3DXQUATERNION RotateAxis(const D3DXVECTOR3 vec, float rot, const D3DXQUATERNION qua1)
 {

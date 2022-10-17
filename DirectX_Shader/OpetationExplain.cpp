@@ -1,6 +1,5 @@
 #include "OpetationExplain.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
 #include "FrameWork/Manager/ManagerInput.h"
 #include "FrameWork/Manager/ManagerScene.h"
 #include "OperationPic.h"

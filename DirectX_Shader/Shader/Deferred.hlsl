@@ -62,19 +62,19 @@ SamplerState	g_SamplerState	: register(s0);
 
 float4 CalculateWorldFromDepth(float2 texcoord, float depth)
 {
-	// clip space between [-1, 1]
-	// flip y so that +ve y is upwards
+	// -1 ~ 1のクリップ空間
+	// yを反転させて、上向きにする
 	float2 clipXY = texcoord * 2.0 - 1.0;
-	//clipXY = -clipXY;
 	clipXY.y = -clipXY.y;
-	// NOTE: depth is not linearized
-	// Also in range [0, 1] due to DirectX Convention
+
+	// NOTE : 深度値が線形じゃない
+	// 範囲[0 ~ 1]
 	float4 clipSpace = float4(clipXY, depth, 1);
 	
 	float4 viewSpace = mul(Projection, clipSpace);
 	
 
-	// perspective divide
+	// クリップ座標をwで割るとNDC座標になる
 	viewSpace /= viewSpace.w;
 
 	float4 worldSpace = mul(View, viewSpace);

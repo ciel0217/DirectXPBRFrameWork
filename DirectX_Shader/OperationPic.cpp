@@ -1,6 +1,5 @@
 #include "OperationPic.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
 #include "FrameWork/LowLevel/CDxRenderer.h"
 #include "FrameWork/Resources/CShader.h"
 #include "FrameWork/Resources/Sprite.h"

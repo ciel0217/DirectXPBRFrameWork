@@ -66,7 +66,7 @@ struct VERTEX_3D
 	D3DXVECTOR3 Normal;//法線
 	D3DXVECTOR2 TexCoord;//UV値
 	D3DXCOLOR   Diffuse;//頂点カラー
-	D3DXVECTOR3 Tangent;//tangent(接ベクトル？なんていうか分からんw)
+	D3DXVECTOR3 Tangent;//tangent
 	D3DXVECTOR3 Binormal;//従法線
 	
 };
@@ -116,15 +116,6 @@ struct DEFERRED_CBUFFER
 	int UseAO = 0;
 	int UseEnvMap = 0;
 	int Dummy[2];
-};
-
-struct OCEAN_CBUFFER
-{
-	D3DXCOLOR MixColor;
-	float Time;
-	float WaveSpeed;
-
-	float Dummy[2];
 };
 
 struct RenderTarget

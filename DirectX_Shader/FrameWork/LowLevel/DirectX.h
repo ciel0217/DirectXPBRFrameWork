@@ -1,7 +1,9 @@
 #pragma warning(push)
 #pragma warning(disable:4005)
 
-#define _CRT_SECURE_NO_WARNINGS			// scanf ÇÃwarningñhé~
+#define _CRT_SECURE_NO_WARNINGS			
+
+//scanf ÇÃwarningñhé~
 #include <stdio.h>
 
 #include <DirectXTex/header/DirectXTex.h>

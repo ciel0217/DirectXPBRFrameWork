@@ -1,5 +1,6 @@
 #pragma once
-#include "../../enum.h"
+
+#include "../Resources/DevelopEnum.h"
 #include "../Resources/CCollisionDetection.h"
 #include <list>
 

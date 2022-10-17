@@ -1,7 +1,7 @@
 #include "AnimeExplosion.h"
 #include "FrameWork/Resources/Sprite.h"
 #include "FrameWork/Manager/ManagerTexture.h"
-#include "enum.h"
+#include "UserEnum.h"
 #include "FrameWork/LowLevel/CDxRenderer.h"
 #include "FrameWork/Resources/CShader.h"
 #include "FrameWork/Manager/audio.h"

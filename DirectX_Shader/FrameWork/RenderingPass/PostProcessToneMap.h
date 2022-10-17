@@ -1,7 +1,7 @@
 #pragma once
 #include "../Resources/CPostProcess.h"
 #include <vector>
-#include "../../struct.h"
+#include "../Resources/DevelopStruct.h"
 
 class PostProcessToneMap : public CPostProcess {
 private:

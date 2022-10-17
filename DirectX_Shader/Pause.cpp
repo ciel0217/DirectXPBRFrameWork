@@ -1,7 +1,6 @@
 #include "Pause.h"
 #include "FrameWork/Manager/ManagerTexture.h"
 #include "FrameWork/Manager/ManagerScene.h"
-#include "enum.h"
 #include "FrameWork/Resources/Sprite.h"
 #include "FrameWork/LowLevel/CDxRenderer.h"
 #include "FrameWork/Resources/CShader.h"

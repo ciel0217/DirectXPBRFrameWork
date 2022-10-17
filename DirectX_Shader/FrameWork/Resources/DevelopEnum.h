@@ -2,7 +2,7 @@
 
 
 enum SortingLayer {
-	eBackMost=0,
+	eBackMost = 0,
 	e3DObject,
 	e2DObject,
 
@@ -20,7 +20,7 @@ enum DrawObjectRenderQueue {
 	eOpacity = 2500,
 	eSkyBox = 7000,
 	eTransparent = 7500,
-	
+
 	e2D = 10000,
 };
 
@@ -29,9 +29,4 @@ enum CollisionType {
 
 
 	eCollisionTypeMax,
-};
-
-enum PlayerBulletType {
-	eBullet = 0,
-	eRocket,
 };
