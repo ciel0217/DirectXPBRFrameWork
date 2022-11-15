@@ -19,7 +19,8 @@ ID3D11ShaderResourceView * ManagerTexture::LoadTexture(std::string filename)
 
 		std::vector<std::string> v;
 
-		while (std::getline(ss, buf, '.')) {
+		while (std::getline(ss, buf, '.')) 
+		{
 			v.push_back(buf);
 		}
 
@@ -31,10 +32,12 @@ ID3D11ShaderResourceView * ManagerTexture::LoadTexture(std::string filename)
 		DirectX::ScratchImage image;
 		DirectX::TexMetadata metadata;
 		HRESULT hr;
-		if (v.back() == "hdr") {
+		if (v.back() == "hdr") 
+		{
 			hr = DirectX::LoadFromHDRFile(str, &metadata, image);
 		}
-		else {
+		else 
+		{
 			hr = DirectX::LoadFromWICFile(str, DirectX::WIC_FLAGS_NONE, &metadata, image);
 		}
 
@@ -49,10 +52,12 @@ ID3D11ShaderResourceView * ManagerTexture::LoadTexture(std::string filename)
 
 ID3D11ShaderResourceView * ManagerTexture::GetTexture(std::string filename)
 {
-	if (!m_texture.count(filename)) {
+	if (!m_texture.count(filename)) 
+	{
 		return nullptr;
 	}
-	else {
+	else 
+	{
 		return m_texture[filename].Get();
 	}
 }

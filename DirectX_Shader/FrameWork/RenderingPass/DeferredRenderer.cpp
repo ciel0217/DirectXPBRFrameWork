@@ -11,9 +11,9 @@ void DeferredRenderer::Config()
 {
 	ZeroMemory(&m_CBufferValue, sizeof(m_CBufferValue));
 	m_Shader = ManagerShader::GetShader("Shader/Deferred.hlsl");
-	if (!m_DeferredCBuffer) {
+	if (!m_DeferredCBuffer) 
 		m_DeferredCBuffer = new CBuffer(CBuffer::CreateBuffer(sizeof(DEFERRED_CBUFFER), D3D11_BIND_CONSTANT_BUFFER, nullptr));
-	}
+	
 }
 
 void DeferredRenderer::Init()
@@ -83,7 +83,8 @@ void DeferredRenderer::Draw()
 	ID3D11ShaderResourceView* t10 = m_SkyBox->GetSpecularMap();
 	ID3D11ShaderResourceView* t11 = m_SkyBox->GetBrdfLUTMap();*/
 
-	if (m_CBufferValue.UseEnvMap == 1) {
+	if (m_CBufferValue.UseEnvMap == 1)
+	{
 		/*CDxRenderer::GetRenderer()->GetDeviceContext()->PSSetShaderResources(8, 1, &t8);*/
 		CDxRenderer::GetRenderer()->GetDeviceContext()->PSSetShaderResources(9, 1, &m_IrradianceTexture);
 		CDxRenderer::GetRenderer()->GetDeviceContext()->PSSetShaderResources(10, 1, &m_PrefilterTexture);

@@ -20,7 +20,8 @@ struct Output_VS
 	float2 texcoord : TEXCOORD0;
 };
 
-struct Output_PS {
+struct Output_PS 
+{
 	float4 color : SV_Target0;
 };
 
@@ -58,18 +59,16 @@ SamplerState	g_SamplerState : register(s0);
 //=============================================================================
 // ピクセルシェーダ
 //=============================================================================
-Output_PS PS_main(Output_VS a)
+Output_PS PS_main(Output_VS vs)
 {
 	Output_PS output;
 	float4 color;
 
 	
-	color = g_Texture.Sample(g_SamplerState, a.texcoord);
+	color = g_Texture.Sample(g_SamplerState, vs.texcoord);
 
 		
-	color *= a.color;
-
-	
+	color *= vs.color;
 
 	output.color = color;
 	//output.color = float4(.0f, 0.0f, 1.0f, 1.0f);

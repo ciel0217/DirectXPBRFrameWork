@@ -27,9 +27,11 @@ void DamageEffect::Uninit()
 
 void DamageEffect::Update()
 {
-	if (m_IsActive) {
+	if (m_IsActive) 
+	{
 		m_FrameCount += 1.0f;
-		if (m_FrameCount > DESTROY_FRAME_COUNT) {
+		if (m_FrameCount > DESTROY_FRAME_COUNT) 
+		{
 			m_FrameCount = 0.0f;
 			m_IsActive = false;
 		}

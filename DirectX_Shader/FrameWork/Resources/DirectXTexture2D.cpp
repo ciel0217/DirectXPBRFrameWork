@@ -62,9 +62,7 @@ DirectXTexture2D * DirectXTexture2D::CreateTextureCube(int size, DXGI_FORMAT tex
 	ID3D11Texture2D* texturePtr;
 	HRESULT result = CDxRenderer::GetRenderer()->GetDevice()->CreateTexture2D(&textureDesc, data, &texturePtr);
 	if (FAILED(result))
-	{
 		return nullptr;
-	}
 
 	return new DirectXTexture2D(texturePtr);
 }
@@ -101,6 +99,7 @@ bool DirectXTexture2D::CreateRTV(DXGI_FORMAT texFormat)
 	ID3D11RenderTargetView* rtv;
 	HRESULT result = CDxRenderer::GetRenderer()->GetDevice()->CreateRenderTargetView(m_Texture.Get(), &rtvDesc, &rtv);
 	m_TextureRTVs.push_back(rtv);
+
 	return SUCCEEDED(result);
 }
 
@@ -121,9 +120,8 @@ bool DirectXTexture2D::CreateTextureCubeRTVs(DXGI_FORMAT texFormat, UINT mipLeve
 		
 			m_TextureRTVs.push_back(rtv);
 			if (FAILED(result))
-			{
 				return false;
-			}
+			
 		}
 
 	}

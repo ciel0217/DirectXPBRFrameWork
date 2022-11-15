@@ -34,15 +34,18 @@ int CDxMainApplication::Run(HINSTANCE hInstance)
 	m_DxWindow = std::make_unique<CDxWindow>(hInstance);
 	
 
-	if (!RegistWndClass()) {
+	if (!RegistWndClass()) 
+	{
 		return -1;
 	}
 
-	if (!CreateMainWnd()) {
+	if (!CreateMainWnd()) 
+	{
 		return -1;
 	}
 
-	if (!Initialize()) {
+	if (!Initialize()) 
+	{
 		return -1;
 	}
 

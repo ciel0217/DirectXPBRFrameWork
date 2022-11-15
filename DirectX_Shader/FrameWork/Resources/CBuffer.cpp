@@ -14,21 +14,24 @@ ID3D11Buffer * CBuffer::CreateBuffer(UINT byte_width, UINT bind_flags, const voi
 
 	ID3D11Buffer* buffer;
 	HRESULT hr;
-	if (!data) {
+	if (!data) 
+	{
 		hr = CDxRenderer::GetRenderer()->GetDevice()->CreateBuffer(&hBufferDesc, nullptr, &buffer);
 	}
-	else {
+	else
+	{
 		D3D11_SUBRESOURCE_DATA resourceData;
 		ZeroMemory(&resourceData, sizeof(D3D11_SUBRESOURCE_DATA));
 		resourceData.pSysMem = data;
 		hr = CDxRenderer::GetRenderer()->GetDevice()->CreateBuffer(&hBufferDesc, &resourceData, &buffer);
 	}
 
-	if (FAILED(hr)) {
+	if (FAILED(hr)) 
+	{
 		//ƒGƒ‰[ˆ—
-		int a = 1;
 		return nullptr;
 	}
+
 	return buffer;
 }
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "DirectX_Shader/FrameWork/LowLevel/DirectX.h"
+#include "../LowLevel/DirectX.h"
 //*********************************************************
 // É}ÉNÉçíËã`
 //*********************************************************

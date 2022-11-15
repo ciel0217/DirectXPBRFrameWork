@@ -2,7 +2,8 @@
 
 static const float PI = 3.14159265359;
 
-float RadicalInverse_VdC(uint bits) {
+float RadicalInverse_VdC(uint bits) 
+{
 	bits = (bits << 16u) | (bits >> 16u);
 	bits = ((bits & 0x55555555u) << 1u) | ((bits & 0xAAAAAAAAu) >> 1u);
 	bits = ((bits & 0x33333333u) << 2u) | ((bits & 0xCCCCCCCCu) >> 2u);
@@ -11,7 +12,8 @@ float RadicalInverse_VdC(uint bits) {
 	return float(bits) * 2.3283064365386963e-10; // / 0x100000000
 }
 
-float2 Hammersley2d(uint i, uint N) {
+float2 Hammersley2d(uint i, uint N)
+{
 	return float2(float(i) / float(N), RadicalInverse_VdC(i));
 }
 

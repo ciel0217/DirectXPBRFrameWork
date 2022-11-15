@@ -1,7 +1,8 @@
 #pragma once
 
 
-enum SortingLayer {
+enum SortingLayer 
+{
 	eBackMost = 0,
 	e3DObject,
 	e2DObject,
@@ -11,12 +12,14 @@ enum SortingLayer {
 	eMaxLayer,
 };
 
-enum PostProcessType {
+enum PostProcessType 
+{
 	eOnlyOpacity = 0,
 	eAll,
 };
 
-enum DrawObjectRenderQueue {
+enum DrawObjectRenderQueue 
+{
 	eOpacity = 2500,
 	eSkyBox = 7000,
 	eTransparent = 7500,
@@ -24,7 +27,8 @@ enum DrawObjectRenderQueue {
 	e2D = 10000,
 };
 
-enum CollisionType {
+enum CollisionType 
+{
 	eBoxCollision = 0,
 
 

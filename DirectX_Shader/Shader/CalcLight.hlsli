@@ -76,13 +76,16 @@ void CalcPointLight(SurfaceInfo surf, LIGHT light, inout LightingInfo info)
 void CalcLight(SurfaceInfo surf, LIGHT light, inout LightingInfo info)
 {
 	info = (LightingInfo)0;
-	if (light.LightType == DIRECTIONAL_LIGHT) {
+	if (light.LightType == DIRECTIONAL_LIGHT)
+	{
 		CalcDirectionalLight(surf, light, info);
 	}
-	else if (light.LightType == SPOT_LIGHT) {
+	else if (light.LightType == SPOT_LIGHT)
+	{
 		CalcSpotLight(surf, light, info);
 	}
-	else if (light.LightType == POINT_LIGHT) {
+	else if (light.LightType == POINT_LIGHT) 
+	{
 		CalcPointLight(surf, light, info);
 	}
 }

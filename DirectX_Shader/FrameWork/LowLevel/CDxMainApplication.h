@@ -26,9 +26,7 @@ public:
 	int Run(HINSTANCE hInstance);
 	
 	HINSTANCE GetHInstance() { return m_hInstance; }
-	void GetWndClass(WNDCLASSEX *wc) {
-		*wc = m_WndClassWx;
-	}
+	void GetWndClass(WNDCLASSEX *wc) { *wc = m_WndClassWx;}
 
 	CDxWindow* GetDxWindow() { return m_DxWindow.get(); }
 
@@ -42,7 +40,5 @@ private:
 	void Draw();
 
 	//デバッグ用
-	char* GetDebugStr(void) {
-		return m_DebugStr;
-	}
+	char* GetDebugStr(void) { return m_DebugStr;}
 };

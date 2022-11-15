@@ -61,7 +61,8 @@ HRESULT CDxRenderer::InitRenderer()
 	
 
 	//マルチパスレンダーターゲット
-	for (int i = 0; i < RENDER_TARGET_NUM + 1; i++) {
+	for (int i = 0; i < RENDER_TARGET_NUM + 1; i++) 
+	{
 		m_RenderTarggers[i] = DirectXTexture2D::CreateTexture(sd.BufferDesc.Width, sd.BufferDesc.Height,
 			DXGI_FORMAT_R16G16B16A16_FLOAT, D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
 		m_RenderTarggers[i]->CreateSRV(DXGI_FORMAT_R16G16B16A16_FLOAT);
@@ -70,7 +71,8 @@ HRESULT CDxRenderer::InitRenderer()
 	}
 
 	//マルチパスレンダーターゲットを設定しやすくするためにRTVだけ取り出しておく
-	for (int i = 0; i < RENDER_TARGET_NUM; i++) {
+	for (int i = 0; i < RENDER_TARGET_NUM; i++) 
+	{
 		m_Rtv[i] = m_RenderTarggers[i]->GetRTV();
 	}
 
@@ -285,15 +287,13 @@ ID3D11Buffer * CDxRenderer::CreateVertexBuffer(UINT VertexNum, VERTEX_3D * obj)
 	ID3D11Buffer* hpBuffer;
 
 	if (!obj) {
-		if (FAILED(m_D3DDevice->CreateBuffer(&bd, NULL, &hpBuffer))) {
-			return nullptr;
-		}
+		if (FAILED(m_D3DDevice->CreateBuffer(&bd, NULL, &hpBuffer))) return nullptr;
+		
 		return hpBuffer;
 	}
 
-	if (FAILED(m_D3DDevice->CreateBuffer(&bd, &vertexSubresourceData, &hpBuffer))) {
-		return nullptr;
-	}
+	if (FAILED(m_D3DDevice->CreateBuffer(&bd, &vertexSubresourceData, &hpBuffer))) return nullptr;
+	
 
 	return hpBuffer;
 }
@@ -314,9 +314,8 @@ ID3D11Buffer* CDxRenderer::CreateIndexBuffer(UINT * Index, UINT IndexNum)
 	hSubResourceData.pSysMem = Index;
 
 	ID3D11Buffer* hpBuffer;
-	if (FAILED(m_D3DDevice->CreateBuffer(&hBufferDesc, &hSubResourceData, &hpBuffer))) {
-		return nullptr;
-	}
+	if (FAILED(m_D3DDevice->CreateBuffer(&hBufferDesc, &hSubResourceData, &hpBuffer))) return nullptr;
+	
 	return hpBuffer;
 }
 
@@ -540,10 +539,12 @@ void CDxRenderer::UnbindShaderResourceView(UINT num)
 
 void CDxRenderer::SetRenderTargetBackBuffor(bool enableDepthStancil)
 {
-	if (enableDepthStancil) {
+	if (enableDepthStancil) 
+	{
 		m_ImmediateContext->OMSetRenderTargets(1, m_BackBuffer.GetAddressOf(), m_DepthStencilView.Get());
 	}
-	else {
+	else
+	{
 		m_ImmediateContext->OMSetRenderTargets(1, m_BackBuffer.GetAddressOf(), NULL);
 	}
 
@@ -558,10 +559,12 @@ void CDxRenderer::SetRenderTargetByDeffard()
 
 void CDxRenderer::SetRenderTargetIntermediateBuffer(bool enableDepthStencil)
 {
-	if (enableDepthStencil) {
+	if (enableDepthStencil) 
+	{
 		m_ImmediateContext->OMSetRenderTargets(1, &m_IntermediateRtv, m_DepthStencilView.Get());
 	}
-	else {
+	else 
+	{
 		m_ImmediateContext->OMSetRenderTargets(1, &m_IntermediateRtv, NULL);
 	}
 
@@ -574,9 +577,9 @@ void CDxRenderer::ClearBackBuffor(bool enableDepthStencilClear)
 	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 	m_ImmediateContext->ClearRenderTargetView(m_BackBuffer.Get(), ClearColor);
 
-	if (enableDepthStencilClear) {
+	if (enableDepthStencilClear) 
 		m_ImmediateContext->ClearDepthStencilView(m_DepthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
-	}
+	
 }
 
 void CDxRenderer::ClearRenderTextureSceneByDeferred(bool enableDepthStencilClear)
@@ -594,9 +597,9 @@ void CDxRenderer::ClearIntermediateBuffer(bool enableDepthStencilClear)
 	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 	m_ImmediateContext->ClearRenderTargetView(m_IntermediateRtv, ClearColor);
 
-	if (enableDepthStencilClear) {
+	if (enableDepthStencilClear) 
 		m_ImmediateContext->ClearDepthStencilView(m_DepthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
-	}
+	
 	
 }
 

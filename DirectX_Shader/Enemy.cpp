@@ -49,9 +49,11 @@ void Enemy::Uninit()
 
 void Enemy::Update()
 {
-	if (!m_IsPause) {
+	if (!m_IsPause) 
+	{
 		D3DXVECTOR3 dir = m_Player->GetPosition() - m_Position;
-		if (m_Player->GetActive()) {
+		if (m_Player->GetActive()) 
+		{
 			if (D3DXVec3Length(&dir) < 10000.0f)
 			{
 

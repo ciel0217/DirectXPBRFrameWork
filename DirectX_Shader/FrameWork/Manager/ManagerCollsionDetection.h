@@ -19,7 +19,8 @@ public:
 
 	static void Create() 
 	{
-		if (!_instance) {
+		if (!_instance) 
+		{
 			_instance = new ManagerCollisionDetection();
 		}
 	}

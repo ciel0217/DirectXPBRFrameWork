@@ -4,7 +4,8 @@
 D3DXQUATERNION AngleAxis(float angle, D3DXVECTOR3 axis);
 
 
-D3DXVECTOR3 Transform(const D3DXVECTOR3 vec, const D3DXQUATERNION qua) {
+D3DXVECTOR3 Transform(const D3DXVECTOR3 vec, const D3DXQUATERNION qua) 
+{
 	float x = qua.x + qua.x;
 	float y = qua.y + qua.y;
 	float z = qua.z + qua.z;
@@ -89,7 +90,8 @@ D3DXQUATERNION FromToRotation(D3DXVECTOR3 from, D3DXVECTOR3 to)
 
 	float angle = acosf(dot / (from_length * to_length)) * (180.0f / D3DX_PI);
 
-	if (angle >= 179.9196f) {
+	if (angle >= 179.9196f) 
+	{
 		D3DXVECTOR3 r;
 		D3DXVec3Cross(&r, &from, &D3DXVECTOR3(1.0f, 0.0f, 0.0f));
 		

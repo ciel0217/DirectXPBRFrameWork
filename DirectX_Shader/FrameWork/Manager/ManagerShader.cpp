@@ -29,7 +29,8 @@ void ManagerShader::LoadVertexShader(std::string name)
 	//シェーダーリフレクションの生成
 	ID3D11ShaderReflection* rf;
 	hr = D3DReflect(pVSBlob->GetBufferPointer(), pVSBlob->GetBufferSize(), IID_ID3D11ShaderReflection, (void**)&rf);
-	if (FAILED(hr)) {
+	if (FAILED(hr)) 
+	{
 		MessageBox(NULL, (char*)pErrorBlob->GetBufferPointer(), "VS", MB_OK | MB_ICONERROR);
 	}
 	m_ShaderList[name]->GetShaderVS()->ShaderRF.Attach(rf);
@@ -90,7 +91,8 @@ void ManagerShader::LoadInputLayout(std::string name, ID3D10Blob* blob)
 
 	std::vector<D3D11_INPUT_ELEMENT_DESC> vbElement;
 
-	for (unsigned int i = 0; i < shaderdesc.InputParameters; i++) {
+	for (unsigned int i = 0; i < shaderdesc.InputParameters; i++) 
+	{
 		D3D11_SIGNATURE_PARAMETER_DESC sigdesc;
 		reflection->GetInputParameterDesc(i, &sigdesc);
 
@@ -108,7 +110,8 @@ void ManagerShader::LoadInputLayout(std::string name, ID3D10Blob* blob)
 		vbElement.push_back(eledesc);
 	}
 	
-	if (!vbElement.empty() && lstrcmp(vbElement[0].SemanticName, "SV_VertexID") != 0) {
+	if (!vbElement.empty() && lstrcmp(vbElement[0].SemanticName, "SV_VertexID") != 0) 
+	{
 		HRESULT hr;
 		ID3D11InputLayout* layout;
 		hr = CDxRenderer::GetRenderer()->GetDevice()->CreateInputLayout(&vbElement[0], vbElement.size(),
@@ -179,19 +182,20 @@ DXGI_FORMAT ManagerShader::GetDxgiFormat(D3D10_REGISTER_COMPONENT_TYPE type, BYT
 
 bool ManagerShader::CompileShader()
 {
-	for (int i = 0; i < SHADER_MAX; i++) {
+	for (int i = 0; i < SHADER_MAX; i++) 
+	{
 		m_ShaderList.insert({ m_ShaderName[i], new CShader()});
 		Load(m_ShaderName[i]);
 		
 	}
-	int a = 0;
 
 	return false;
 }
 
 CShader* ManagerShader::GetShader(std::string name)
 {
-	if (m_ShaderList.count(name)) {
+	if (m_ShaderList.count(name)) 
+	{
 		return m_ShaderList[name];
 	}
 	return nullptr;
@@ -199,7 +203,8 @@ CShader* ManagerShader::GetShader(std::string name)
 
 void ManagerShader::Release()
 {
-	for (auto shader : m_ShaderList) {
+	for (auto shader : m_ShaderList)
+	{
 		delete shader.second;
 	}
 

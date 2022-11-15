@@ -25,13 +25,15 @@ void ParticleEmitter::Uninit()
 
 void ParticleEmitter::Update()
 {
-	if (m_Parent) {
+	if (m_Parent)
+	{
 		m_Position = m_Parent->GetPosition();
 		m_Rotation = m_Parent->GetRotation();
 	}
 
 	m_FrameCount++;
-	if (m_FrameCount > m_GenerateTime) {
+	if (m_FrameCount > m_GenerateTime) 
+	{
 		m_FrameCount = 0;
 		Particle* particle = new Particle();
 		particle->SetAddAngle(m_AddAngle);
@@ -57,14 +59,16 @@ void ParticleEmitter::Update()
 
 	m_ParticleList.erase(std::remove_if(m_ParticleList.begin(), m_ParticleList.end(), [](CommonProcess* obj) {return obj->Destroy(); }), m_ParticleList.end());
 
-	for (auto particle : m_ParticleList) {
+	for (auto particle : m_ParticleList) 
+	{
 		particle->Update();
 	}
 }
 
 void ParticleEmitter::Draw()
 {
-	for (auto particle : m_ParticleList) {
+	for (auto particle : m_ParticleList) 
+	{
 		particle->Draw();
 	}
 }

@@ -15,25 +15,29 @@ ManagerLight::~ManagerLight()
 
 void ManagerLight::Config()
 {
-	for (auto light : m_Lights) {
+	for (auto light : m_Lights)
+	{
 		light->Config();
 	}
 }
 
 void ManagerLight::Init()
 {
-	for (auto light : m_Lights) {
+	for (auto light : m_Lights) 
+	{
 		light->Init();
 	}
 }
 
 void ManagerLight::Uninit()
 {
-	for (auto light : m_Lights) {
+	for (auto light : m_Lights) 
+	{
 		light->Uninit();
 	}
 
-	m_Lights.remove_if([](CommonProcess* obj) {
+	m_Lights.remove_if([](CommonProcess* obj) 
+	{
 		return obj->Release();
 	});
 	m_Lights.clear();
@@ -43,7 +47,8 @@ void ManagerLight::Uninit()
 
 void ManagerLight::Update()
 {
-	for (auto light : m_Lights) {
+	for (auto light : m_Lights)
+	{
 		light->Update();
 	}
 }
@@ -52,11 +57,13 @@ void ManagerLight::SetLightCBuffer()
 {
 	LIGHT_CBUFFER light_cbuffer;
 	light_cbuffer.GlobalAmbient = D3DXCOLOR(0.1f, 0.1f, 0.1f, 1.0f);
-	for (int i = 0; i < LIGHT_MAX; i++) {
+	for (int i = 0; i < LIGHT_MAX; i++) 
+	{
 		light_cbuffer.Lights[i].Status = LIGHT_DISABLE;
 	}
 	int count = 0;
-	for (auto light : m_Lights) {
+	for (auto light : m_Lights) 
+	{
 		light_cbuffer.Lights[count++] = light->GetLight();
 	}
 

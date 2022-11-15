@@ -15,8 +15,10 @@ ManagerCollisionDetection::ManagerCollisionDetection()
 
 ManagerCollisionDetection::~ManagerCollisionDetection()
 {
-	for (int i = 0; i < eCollisionTypeMax; i++) {
-		for (int j = 0; j < eCollisionTypeMax; j++) {
+	for (int i = 0; i < eCollisionTypeMax; i++) 
+	{
+		for (int j = 0; j < eCollisionTypeMax; j++) 
+		{
 			delete m_CollisionDetection[i][j];
 		}
 	}
@@ -59,10 +61,5 @@ void ManagerCollisionDetection::CollisionCheck(std::list<CommonProcess*> gameobj
 
 			}
 		}
-	}
-
-	if (count > 50) {
-		int a = 0;
-		a = 1;
 	}
 }

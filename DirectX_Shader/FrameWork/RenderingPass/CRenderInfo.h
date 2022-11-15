@@ -1,8 +1,8 @@
 #pragma once
-#include "DirectX_Shader/FrameWork/LowLevel/DirectX.h"
+#include "../LowLevel/DirectX.h"
 #include <string>
 #include "../Resources/DevelopStruct.h"
-#include "DirectX_Shader/FrameWork/Manager/ManagerShader.h"
+#include "../Manager/ManagerShader.h"
 #include "../Resources/DevelopEnum.h"
 
 class CShader;

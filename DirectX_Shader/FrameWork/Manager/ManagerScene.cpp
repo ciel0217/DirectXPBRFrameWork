@@ -33,7 +33,8 @@ void ManagerScene::Draw()
 
 void ManagerScene::CheckNextScene()
 {
-	if (m_NextScene) {
+	if (m_NextScene) 
+	{
 		m_CurrentScene->Uninit();
 		delete m_CurrentScene;
 

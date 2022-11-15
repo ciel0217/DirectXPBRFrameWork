@@ -4,8 +4,8 @@
 
 void GBufferPass::Draw(std::list<CommonProcess*> gameobject)
 {
-
-	for (auto obj : gameobject) {
+	for (auto obj : gameobject)
+	{
 		obj->Draw();
 	}
 }

@@ -31,7 +31,8 @@ void Particle::Uninit()
 void Particle::Update()
 {
 	m_FrameCount++;
-	if (m_FrameCount > m_LimitLifeTime) {
+	if (m_FrameCount > m_LimitLifeTime) 
+	{
 		m_IsDestroy = true;
 		return;
 	}

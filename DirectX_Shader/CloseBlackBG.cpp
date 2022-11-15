@@ -27,10 +27,12 @@ void CloseBlackBG::Uninit()
 
 void CloseBlackBG::Update()
 {
-	if (m_IsActive) {
+	if (m_IsActive) 
+	{
 		m_Position.x -= m_CloseSpeed;
 
-		if (m_Position.x <= SCREEN_WIDTH / 2.0f) {
+		if (m_Position.x <= SCREEN_WIDTH / 2.0f)
+		{
 			m_CanNext = true;
 			m_Position.x = SCREEN_WIDTH / 2.0f;
 		}

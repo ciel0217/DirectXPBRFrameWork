@@ -54,10 +54,6 @@ private:
 	ID3D11RenderTargetView* m_Rtv[RENDER_TARGET_NUM];
 	ID3D11RenderTargetView* m_IntermediateRtv;
 
-
-
-
-
 	HWND m_hWnd;
 	HINSTANCE m_hInstance;
 

@@ -39,7 +39,8 @@ void SkyBox::Uninit()
 
 void SkyBox::Update()
 {
-	if (m_Camera) {
+	if (m_Camera) 
+	{
 		m_Position.x = m_Camera->GetPosition().x;
 		m_Position.z = m_Camera->GetPosition().y;
 	}
@@ -109,13 +110,15 @@ void SkyBox::DrawByCubeMap()
 	
 
 	//環境マップ作成
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 6; i++) 
+	{
 
 		CDxRenderer::GetRenderer()->GetDeviceContext()->ClearRenderTargetView(m_CubeMap->GetRenderTargetViewPointer(i), ClearColor);
 	}
 
 	m_CubeMap->SetViewPort();
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 6; i++) 
+	{
 		
 		CDxRenderer::GetRenderer()->GetDeviceContext()->OMSetRenderTargets(1, m_CubeMap->GetRenderTargetViewPointerPointer(i), nullptr);
 
@@ -130,16 +133,16 @@ void SkyBox::DrawByCubeMap()
 	}
 
 	//放射照度マップ作成
-	for (int i = 0; i < 6; i++) {
-
+	for (int i = 0; i < 6; i++) 
+	{
 		CDxRenderer::GetRenderer()->GetDeviceContext()->ClearRenderTargetView(m_IrradianceMap->GetRenderTargetViewPointer(i), ClearColor);
 	}
 
 	m_IrradianceMap->SetViewPort();
-	for (int i = 0; i < 6; i++) {
+
+	for (int i = 0; i < 6; i++) 
+	{
 		CDxRenderer::GetRenderer()->GetDeviceContext()->OMSetRenderTargets(1, m_IrradianceMap->GetRenderTargetViewPointerPointer(i), nullptr);
-
-
 		m_IrradianceMap->SetEnvMapCamera(i);
 
 		CDxRenderer::GetRenderer()->GetDeviceContext()->VSSetShader(m_ShaderIrradianceMap->GetShaderVS()->VertexShader.Get(), nullptr, 0);
@@ -158,15 +161,18 @@ void SkyBox::DrawByCubeMap()
 	////
 
 	//環境マップのPreFilter
-	for (int i = 0; i < 6; i++) {
-		for (int j = 0; j < 6; j++) {
+	for (int i = 0; i < 6; i++) 
+	{
+		for (int j = 0; j < 6; j++) 
+		{
 			CDxRenderer::GetRenderer()->GetDeviceContext()->ClearRenderTargetView(m_PreFilterMap->GetRenderTargetViewPointer(i * 6 + j), ClearColor);
 		}
 	}
 
 	float map_size = CUBE_MAP_SIZE;
 	m_RoughnessCBuffer->PSSetCBuffer(0);
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 6; i++) 
+	{
 		float roughness = (float)i / 5.0f;
 		m_RoughnessCBuffer->UpdateBuffer(&roughness);
 		m_RoughnessCBuffer->PSSetCBuffer(4);
@@ -179,7 +185,8 @@ void SkyBox::DrawByCubeMap()
 		view_port.MaxDepth = 1;
 
 		CDxRenderer::GetRenderer()->GetDeviceContext()->RSSetViewports(1, &view_port);
-		for (int j = 0; j < 6; j++) {
+		for (int j = 0; j < 6; j++)
+		{
 			CDxRenderer::GetRenderer()->GetDeviceContext()->OMSetRenderTargets(1, m_PreFilterMap->GetRenderTargetViewPointerPointer(i * 6 + j), nullptr);
 			m_PreFilterMap->SetEnvMapCamera(j);
 

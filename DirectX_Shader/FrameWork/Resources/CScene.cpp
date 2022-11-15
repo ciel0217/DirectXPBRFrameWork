@@ -4,12 +4,15 @@
 
 void CScene::Config()
 {
-	for (auto camera : m_SceneCameras) {
+	for (auto camera : m_SceneCameras) 
+	{
 		camera->Config();
 	}
 
-	for (int i = 0; i < eMaxLayer; i++) {
-		for (auto gameobject : m_GameObjects[i]) {
+	for (int i = 0; i < eMaxLayer; i++) 
+	{
+		for (auto gameobject : m_GameObjects[i])
+		{
 			gameobject->Config();
 		}
 	}
@@ -17,12 +20,15 @@ void CScene::Config()
 
 void CScene::Init()
 {
-	for (auto camera : m_SceneCameras) {
+	for (auto camera : m_SceneCameras) 
+	{
 		camera->Init();
 	}
 
-	for (int i = 0; i < eMaxLayer; i++) {
-		for (auto gameobject : m_GameObjects[i]) {
+	for (int i = 0; i < eMaxLayer; i++)
+	{
+		for (auto gameobject : m_GameObjects[i]) 
+		{
 			gameobject->Init();
 		}
 	}
@@ -30,18 +36,22 @@ void CScene::Init()
 
 void CScene::Uninit()
 {
-	for (auto camera : m_SceneCameras) {
+	for (auto camera : m_SceneCameras)
+	{
 		camera->Uninit();
 	}
 
-	for (int i = 0; i < eMaxLayer; i++) {
-		for (auto gameobject : m_GameObjects[i]) {
+	for (int i = 0; i < eMaxLayer; i++) 
+	{
+		for (auto gameobject : m_GameObjects[i]) 
+		{
 			gameobject->Uninit();
 		}
 
-		m_GameObjects[i].remove_if([](CommonProcess* obj) {
+		m_GameObjects[i].remove_if([](CommonProcess* obj) 
+		{
 			return obj->Release();
-			});
+		});
 		m_GameObjects[i].clear();
 	}
 
@@ -49,20 +59,25 @@ void CScene::Uninit()
 
 void CScene::Update()
 {
-	for (auto camera : m_SceneCameras) {
+	for (auto camera : m_SceneCameras) 
+	{
 		camera->Update();
 	}
 
-	for (int i = 0; i < eMaxLayer; i++) {
-		for (auto gameobject : m_GameObjects[i]) {
+	for (int i = 0; i < eMaxLayer; i++) 
+	{
+		for (auto gameobject : m_GameObjects[i]) 
+		{
 			gameobject->Update();
 		}
 	}
 
 	HitCheck();
 	
-	for (int i = 0; i < eMaxLayer; i++) {
-		m_GameObjects[i].remove_if([](CommonProcess* obj) {
+	for (int i = 0; i < eMaxLayer; i++)
+	{
+		m_GameObjects[i].remove_if([](CommonProcess* obj) 
+		{
 
 			bool destroy = obj->Destroy();
 			if (destroy) {
@@ -81,7 +96,8 @@ void CScene::HitCheck()
 
 void CScene::Draw()
 {
-	for (auto camera : m_SceneCameras) {
+	for (auto camera : m_SceneCameras) 
+	{
 		camera->DrawRenderer(m_GameObjects);
 	}
 }

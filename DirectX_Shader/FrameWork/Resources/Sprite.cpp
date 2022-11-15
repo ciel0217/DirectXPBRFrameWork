@@ -72,7 +72,8 @@ void Sprite2D::Draw2D(ID3D11ShaderResourceView * texture, D3DXVECTOR3 pos, D3DXV
 	// プリミティブトポロジ設定
 	CDxRenderer::GetRenderer()->GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
-	if (texture) {
+	if (texture)
+	{
 		// テクスチャ設定
 		CDxRenderer::GetRenderer()->GetDeviceContext()->PSSetShaderResources(0, 1, &texture);
 	}

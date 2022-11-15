@@ -41,7 +41,8 @@ void Bullet::Uninit()
 
 void Bullet::Update()
 {
-	if (!m_IsPause) {
+	if (!m_IsPause) 
+	{
 		m_Position += m_Velocity * m_Speed;
 
 		m_LifeFrame++;

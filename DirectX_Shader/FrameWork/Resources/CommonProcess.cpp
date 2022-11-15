@@ -3,7 +3,8 @@
 //ƒQ[ƒ€’†‚Éíœ‚·‚é‚Æ‚«
 bool CommonProcess::Destroy()
 {
-	if (m_IsDestroy) {
+	if (m_IsDestroy) 
+	{
 		Uninit();
 		//delete this;
 		return true;

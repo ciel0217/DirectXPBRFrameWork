@@ -30,20 +30,25 @@ CameraRenderer::CameraRenderer()
 {
 	if (!m_DeferredRenderPass)
 		m_DeferredRenderPass = new DeferredRenderer();
+	
 	if (!m_LightPass)
 		m_LightPass = new ManagerLight;
+	
 	if (!m_ToneMapPass)
 		m_ToneMapPass = new PostProcessToneMap();
+	
 	if (!m_GBufferPass)
 		m_GBufferPass = new GBufferPass();
 
 	if(!m_ViewCBuffer)
 		m_ViewCBuffer = new CBuffer(CBuffer::CreateBuffer(sizeof(D3DMATRIX), D3D11_BIND_CONSTANT_BUFFER, nullptr));
+	
 	if(!m_ProjectionCBuffer)
 		m_ProjectionCBuffer = new CBuffer(CBuffer::CreateBuffer(sizeof(D3DMATRIX), D3D11_BIND_CONSTANT_BUFFER, nullptr));
 
 	if (!m_ViewInverseCBuffer)
 		m_ViewInverseCBuffer = new CBuffer(CBuffer::CreateBuffer(sizeof(D3DMATRIX), D3D11_BIND_CONSTANT_BUFFER, nullptr));
+	
 	if (!m_ProjectionInverseCBuffer)
 		m_ProjectionInverseCBuffer = new CBuffer(CBuffer::CreateBuffer(sizeof(D3DMATRIX), D3D11_BIND_CONSTANT_BUFFER, nullptr));
 
@@ -58,11 +63,13 @@ CameraRenderer::CameraRenderer()
 void CameraRenderer::SetUpRenderer()
 {
 	
-	for (auto effect : m_PostProcessToOpacity) {
+	for (auto effect : m_PostProcessToOpacity)
+	{
 		effect->Config();
 	}
 
-	for (auto effect : m_PostProcessToAll) {
+	for (auto effect : m_PostProcessToAll) 
+	{
 		effect->Config();
 	}
 }
@@ -70,23 +77,27 @@ void CameraRenderer::SetUpRenderer()
 void CameraRenderer::Uninit()
 {
 	//static‚¶‚á‚È‚¢‚â‚Â‚ð‰ð•ú
-	for (auto obj : m_PostProcessToOpacity) {
+	for (auto obj : m_PostProcessToOpacity)
+	{
 		obj->Uninit();
 	}
 
-	for (auto obj : m_PostProcessToAll) {
+	for (auto obj : m_PostProcessToAll)
+	{
 		obj->Uninit();
 	}
 	m_DeferredRenderPass->Uninit();
 
-	m_PostProcessToOpacity.remove_if([](CPostProcess* obj) {
+	m_PostProcessToOpacity.remove_if([](CPostProcess* obj) 
+	{
 		return obj->Release();
-		});
+	});
 	m_PostProcessToOpacity.clear();
 
-	m_PostProcessToAll.remove_if([](CPostProcess* obj) {
+	m_PostProcessToAll.remove_if([](CPostProcess* obj)
+	{
 		return obj->Release();
-		});
+	});
 	m_PostProcessToAll.clear();
 }
 
@@ -127,21 +138,27 @@ void CameraRenderer::CalcRenderingOrder(std::list<CommonProcess *> gameobject[])
 {
 	ClearGameObjectList();
 
-	for (int i = 0; i < eMaxLayer; i++) {
-		for (auto obj : gameobject[i]) {
+	for (int i = 0; i < eMaxLayer; i++) 
+	{
+		for (auto obj : gameobject[i]) 
+		{
 		
-			if (dynamic_cast<CLight*>(obj)) {
+			if (dynamic_cast<CLight*>(obj))
+			{
 				m_LightPass->SetLight(dynamic_cast<CLight*>(obj));
 				continue;
 			}
 
-			if (obj->GetRenderQueue() <= DrawObjectRenderQueue::eOpacity) {
+			if (obj->GetRenderQueue() <= DrawObjectRenderQueue::eOpacity) 
+			{
 				m_GameObjectsOpacity.push_back(obj);
 			}
-			else if (obj->GetRenderQueue() == DrawObjectRenderQueue::e2D) {
+			else if (obj->GetRenderQueue() == DrawObjectRenderQueue::e2D) 
+			{
 				m_GameObjects2D.push_back(obj);
 			}
-			else {
+			else
+			{
 				m_GameObjectsTransparent.push_back(obj);
 			}
 		}
@@ -177,28 +194,32 @@ void CameraRenderer::ClearGameObjectList()
 
 void CameraRenderer::DrawTransparent()
 {
-	for (auto obj : m_GameObjectsTransparent) {
+	for (auto obj : m_GameObjectsTransparent) 
+	{
 		obj->Draw();
 	}
 }
 
 void CameraRenderer::Draw2D()
 {
-	for (auto obj : m_GameObjects2D) {
+	for (auto obj : m_GameObjects2D)
+	{
 		obj->Draw();
 	}
 }
 
 void CameraRenderer::DrawPostProcessToOpacity()
 {
-	for (auto effect : m_PostProcessToOpacity) {
+	for (auto effect : m_PostProcessToOpacity) 
+	{
 		effect->Draw();
 	}
 }
 
 void CameraRenderer::DrawPostProcessToAll()
 {
-	for (auto effect : m_PostProcessToAll) {
+	for (auto effect : m_PostProcessToAll) 
+	{
 		effect->Draw();
 	}
 }

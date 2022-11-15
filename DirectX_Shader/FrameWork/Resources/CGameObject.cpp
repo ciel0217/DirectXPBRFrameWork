@@ -10,7 +10,8 @@
 //2D‚ÌDraw
 void CGameObject2D::Draw()
 {
-	if (m_IsActive) {
+	if (m_IsActive) 
+	{
 		CDxRenderer::GetRenderer()->SetVertexShader(m_Shader->GetShaderVS()->VertexShader.Get());
 		CDxRenderer::GetRenderer()->SetPixelShader(m_Shader->GetShaderPS().Get());
 		CDxRenderer::GetRenderer()->SetInputLayout(m_Shader->GetShaderVS()->Layout.Get());
@@ -24,11 +25,13 @@ CBuffer* CGameObject3D::m_InverseWorldCBuffer = nullptr;
 
 void CGameObject3D::SetUpGameObject()
 {
-	if (!m_WorldCBuffer) {
+	if (!m_WorldCBuffer)
+	{
 		m_WorldCBuffer = new CBuffer(CBuffer::CreateBuffer(sizeof(D3DMATRIX), D3D11_BIND_CONSTANT_BUFFER, nullptr));
 	}
 
-	if (!m_InverseWorldCBuffer) {
+	if (!m_InverseWorldCBuffer) 
+	{
 		m_InverseWorldCBuffer = new CBuffer(CBuffer::CreateBuffer(sizeof(D3DMATRIX), D3D11_BIND_CONSTANT_BUFFER, nullptr));
 	}
 }
@@ -41,7 +44,8 @@ void CGameObject3D::ReleaseGameObject()
 
 void CGameObject3D::Draw()
 {
-	if (m_IsActive) {
+	if (m_IsActive) 
+	{
 		D3DXMATRIX mtxScl, mtxRot, mtxTranslate;
 		D3DXMATRIX mtxWorld, mtxInverseWorld;
 
