@@ -10,7 +10,7 @@ void DirectionalLight::Config()
 
 	
 	//lightèâä˙âª
-	m_Light.Direction = D3DXVECTOR4(0.0f, -1.0f, 0.0f, 1.0f);
+	m_Light.Direction = D3DXVECTOR4(-0.2f, -0.5f, 1.0f, 1.0f);
 	m_Light.Ambient = D3DXCOLOR(1.0f, 1.0f, 1.0f, .0f);
 	m_Light.Attenuation = 0.0f;
 	m_Light.Diffuse = m_Color;

@@ -41,7 +41,7 @@ void Test3D::Update()
 
 void Test3D::Load()
 {
-	m_ModelName = "asset/model/SkyBox2.obj";
+	m_ModelName = "asset/model/Sphere.obj";
 	m_Model = ManagerModel::Load(m_ModelName);
 
 }
