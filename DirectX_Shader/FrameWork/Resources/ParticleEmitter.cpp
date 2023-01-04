@@ -46,7 +46,7 @@ void ParticleEmitter::Update()
 		particle->SetInitScale(m_ParticleScale);
 		particle->SetInitRotation(m_ParticleRotation);
 
-		D3DXVECTOR3 axis = Transform(UnitX, m_Rotation);
+		D3DXVECTOR3 axis = Transform(UnitZ, m_Rotation);
 		particle->SetInitVelocity(axis);
 		particle->SetColor(m_ParticleColor);
 

@@ -54,8 +54,10 @@ void Particle::Update()
 void Particle::Draw()
 {
 	ID3D11ShaderResourceView* texture = ManagerTexture::GetTexture(m_TextureName);
+	//CDxRenderer::GetRenderer()->SetBlendState(BLEND_MODE_ADD);
 	CDxRenderer::GetRenderer()->SetVertexShader(m_Shader->GetShaderVS()->VertexShader.Get());
 	CDxRenderer::GetRenderer()->SetPixelShader(m_Shader->GetShaderPS().Get());
 	CDxRenderer::GetRenderer()->SetInputLayout(m_Shader->GetShaderVS()->Layout.Get());
-	Sprite2D::DrawBillboard(texture, m_Position, m_Scale, m_Color, D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), m_Material);
+	Sprite2D::DrawBillboard(texture, m_Position + D3DXVECTOR3(0.0f, 5.0f, 0.0f), m_Scale, m_Color, D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(1.0f, 1.0f), m_Material);
+	CDxRenderer::GetRenderer()->SetBlendState(BLEND_MODE_ALPHABLEND);
 }

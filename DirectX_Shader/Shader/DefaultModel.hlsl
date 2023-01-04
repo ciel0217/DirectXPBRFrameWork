@@ -99,20 +99,16 @@ Output_PS PS_main(Output_VS a)
 {
 	Output_PS output;
 	float4 color;
+	
 
-	if (Material.noTexSampling == 0)
-	{
-		color = g_Texture.Sample(g_SamplerState, a.texcoord);
+
+	color = g_Texture.Sample(g_SamplerState, a.texcoord);
 		//color = Material.Roughness;
 
-		//color = float4(1.0f, 0.0f, 1.0f, 1.0f);
-	}
-	else
-	{
-		color = a.color;
-		color = float4(1.0f, 0.0f, 1.0f, 1.0f);
 
-	}
+	color *= a.color;
+
+	//color = float4(a.texcoord.x, a.texcoord.y, .0f, 1.0f);
 
 	output.color = color;
 	

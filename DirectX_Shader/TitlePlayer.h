@@ -1,6 +1,6 @@
 #pragma once
 #include "FrameWork/Resources/CGameObject.h"
-
+#include "FrameWork/Resources/ParticleEmitter.h"
 
 
 class Audio;
@@ -11,7 +11,7 @@ private:
 	int m_FrameCount;
 
 	Audio* m_Audio;
-
+	ParticleEmitter* m_ParticleEmitter;
 	const float ROTATION_VALUE = 0.04f;
 	const D3DXVECTOR3  UnitX = D3DXVECTOR3(1.0f, 0.0f, 0.0f);
 	const D3DXVECTOR3  UnitY = D3DXVECTOR3(0.0f, 1.0f, 0.0f);

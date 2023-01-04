@@ -18,22 +18,22 @@
 void TitleScene::SetObject()
 {
 	m_CurrentMainCamera = AddGameObject<TitleSceneCamera>(eBackMost);
-	m_CurrentMainCamera->SetInitPosition(D3DXVECTOR3(0.0f, 100.0f, -100.0f));
+	m_CurrentMainCamera->SetInitPosition(D3DXVECTOR3(0.0f, -0.5f, 0.0f));
 
 	/*Enemy* enemy = AddGameObject<Enemy>(e3DObject);
 	enemy->SetInitPosition(D3DXVECTOR3(0.0f, 95.0f, 0.0f));*/
-	for (int i = 0; i < 7; i++) {
-		for (int j = 0; j < 7; j++) {
-			Test3D* test = AddGameObject<Test3D>(e3DObject);
-			test->Load();
-			test->SetInitPosition(D3DXVECTOR3(-50.0f + 110.0f * ((float)j/7.0f), 50.0f + 110.0f * ((float)i /7.0f), 50.0f));
-			test->SetInitScale(D3DXVECTOR3(5.8f, 5.8f, 5.8f));
-			test->Settt((float)j/7.0f, (float)i/7.0f);
-			//test->Settt(.1f,.1f);
-		}
-	}
+	//for (int i = 0; i < 7; i++) {
+	//	for (int j = 0; j < 7; j++) {
+	//		Test3D* test = AddGameObject<Test3D>(e3DObject);
+	//		test->Load();
+	//		test->SetInitPosition(D3DXVECTOR3(-50.0f + 110.0f * ((float)j/7.0f), 50.0f + 110.0f * ((float)i /7.0f), 50.0f));
+	//		test->SetInitScale(D3DXVECTOR3(5.8f, 5.8f, 5.8f));
+	//		test->Settt((float)j/7.0f, (float)i/7.0f);
+	//		//test->Settt(.1f,.1f);
+	//	}
+	//}
 
-	/*Ocean* ocean = AddGameObject<Ocean>(e3DObject);
+	Ocean* ocean = AddGameObject<Ocean>(e3DObject);
 	ocean->SetInitPosition(D3DXVECTOR3(0.0f, -1.0f, 0.0f));
 	ocean->SetInitScale(D3DXVECTOR3(100000.0f, 1.0f, 100000.0f));
 	
@@ -74,7 +74,7 @@ void TitleScene::SetObject()
 
 	CloseBlackBG* black = AddGameObject<CloseBlackBG>(e2DObject);
 	black->SetInitPosition(D3DXVECTOR3(SCREEN_WIDTH/2.0f + SCREEN_WIDTH, SCREEN_HEIGHT/2.0f, 0.0f));
-	black->SetInitScale(D3DXVECTOR3(SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f));*/
+	black->SetInitScale(D3DXVECTOR3(SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f));
 
 	AddGameObject<SkyBox>(e3DObject)->SetInitScale(D3DXVECTOR3(10000.0f, 10000.0f, 10000.0f));
 	AddGameObject<DirectionalLight>(e3DObject);

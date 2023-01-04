@@ -121,6 +121,7 @@ void CameraRenderer::DrawRenderer(std::list<CommonProcess *> gameobject[])
 	
 	DrawPostProcessToOpacity();
 
+	
 	CDxRenderer::GetRenderer()->SetRenderTargetIntermediateBuffer(true);
 	DrawTransparent();
 

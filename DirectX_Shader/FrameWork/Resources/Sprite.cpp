@@ -196,10 +196,10 @@ void Sprite2D::DrawBillboard(ID3D11ShaderResourceView * texture, D3DXVECTOR3 pos
 		vertex[3].Normal = dir;
 
 		// 頂点カラーの設定
-		vertex[0].Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-		vertex[1].Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-		vertex[2].Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-		vertex[3].Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+		vertex[0].Diffuse = color;
+		vertex[1].Diffuse = color;
+		vertex[2].Diffuse = color;
+		vertex[3].Diffuse = color;
 
 		// テクスチャ座標の設定
 		vertex[0].TexCoord = D3DXVECTOR2(uv.x, uv.y + uv_wh.y);
@@ -258,4 +258,6 @@ void Sprite2D::DrawBillboard(ID3D11ShaderResourceView * texture, D3DXVECTOR3 pos
 	CDxRenderer::GetRenderer()->SetCullingMode(CULL_MODE_BACK);
 
 	CDxRenderer::GetRenderer()->UnbindShaderResourceView(0);
+
+	CDxRenderer::GetRenderer()->SetAlphaTestEnable(false);
 }

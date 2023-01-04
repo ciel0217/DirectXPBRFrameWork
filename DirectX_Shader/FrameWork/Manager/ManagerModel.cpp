@@ -439,19 +439,19 @@ void ManagerModel::Init()
 
 DX11_MODEL* ManagerModel::Load(std::string  file)
 {
-	DX11_MODEL* ret = new DX11_MODEL();
+	DX11_MODEL* ret;
 
 	if (m_ModelList.count(file) != 0) {
 		
-		memcpy(ret, m_ModelList[file], sizeof(DX11_MODEL));
+		/*memcpy(ret, m_ModelList[file], sizeof(DX11_MODEL));
 		ret->SubsetArray = nullptr;
 		ret->SubsetArray = new DX11_SUBSET;
-		memcpy(ret->SubsetArray, m_ModelList[file]->SubsetArray, sizeof(DX11_SUBSET));
-		//ret = m_ModelList[file];
+		memcpy(ret->SubsetArray, m_ModelList[file]->SubsetArray, sizeof(DX11_SUBSET));*/
+		ret = m_ModelList[file];
 		return ret;
 	}
 	/*ret = ;*/
-	//ret = new DX11_MODEL();
+	ret = new DX11_MODEL();
 	m_ModelList[file] = ret;
 	MODEL model;
 

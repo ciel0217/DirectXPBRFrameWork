@@ -48,7 +48,6 @@ HRESULT CDxRenderer::InitRenderer()
 	if (FAILED(hr))
 		return hr;
 
-
 	// レンダーターゲットビュー生成、設定
 	ID3D11Texture2D* pBackBuffer = NULL;
 	ID3D11RenderTargetView *temp;
@@ -404,7 +403,7 @@ void CDxRenderer::SetAlphaTestEnable(BOOL flag)
 {
 	D3D11_BLEND_DESC blendDesc;
 	ZeroMemory(&blendDesc, sizeof(blendDesc));
-
+	
 	if (flag)
 		blendDesc.AlphaToCoverageEnable = TRUE;
 	else
@@ -423,7 +422,7 @@ void CDxRenderer::SetAlphaTestEnable(BOOL flag)
 		blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
 		blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
 		blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
-		break;
+		break;				   
 	case BLEND_MODE_ALPHABLEND:
 		blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
 		blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
@@ -432,8 +431,8 @@ void CDxRenderer::SetAlphaTestEnable(BOOL flag)
 		blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
 		blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
 		blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
-		break;
-	case BLEND_MODE_ADD:
+		break;				  
+	case BLEND_MODE_ADD:	  
 		blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
 		blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
 		blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
@@ -456,7 +455,8 @@ void CDxRenderer::SetAlphaTestEnable(BOOL flag)
 	float blendFactor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 	ID3D11BlendState* blendState = NULL;
 	m_D3DDevice->CreateBlendState(&blendDesc, &blendState);
-	m_ImmediateContext->OMSetBlendState(blendState, blendFactor, 0xffffffff);
+	m_ImmediateContext->OMSetBlendState(blendState, 0, 0xffffffff);
+	
 
 	if (blendState != NULL)
 		blendState->Release();

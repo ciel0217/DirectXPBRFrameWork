@@ -30,6 +30,7 @@ private:
 	D3DXCOLOR   m_AddColor = D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f);
 
 	const D3DXVECTOR3  UnitX = D3DXVECTOR3(1.0f, 0.0f, 0.0f);
+	const D3DXVECTOR3  UnitZ = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
 
 public:
 	void Config()override;
@@ -42,6 +43,7 @@ public:
 	void SetParticleScale(D3DXVECTOR3 scale) { m_ParticleScale = scale; }
 	void SetParticleVelocity(D3DXVECTOR3 velo) { m_ParticleVelocity = velo; }
 	void SetParticleRotation(D3DXQUATERNION qua) { m_ParticleRotation = qua; }
+	void SetColor(D3DXCOLOR color) { m_ParticleColor = color; }
 	void SetAddScale(D3DXVECTOR3 scale) { m_AddScale = scale; }
 	void SetAddAngle(D3DXVECTOR3 angle) { m_AddAngle = angle; }
 	void SetAddColor(D3DXCOLOR color) { m_AddColor = color; }
