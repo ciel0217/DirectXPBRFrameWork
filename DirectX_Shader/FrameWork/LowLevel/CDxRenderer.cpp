@@ -153,45 +153,53 @@ HRESULT CDxRenderer::InitRenderer()
 	D3D11_BLEND_DESC blendDesc;
 	ZeroMemory(&blendDesc, sizeof(blendDesc));
 	blendDesc.AlphaToCoverageEnable = FALSE;
-	blendDesc.IndependentBlendEnable = FALSE;
-	blendDesc.RenderTarget[0].BlendEnable = TRUE;
-	blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
-	blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
-	blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
-	blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
-	blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
-	blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+	blendDesc.IndependentBlendEnable = TRUE;
+	for (int i = 0; i < 8; i++) {
+		blendDesc.RenderTarget[i].BlendEnable = TRUE;
+		blendDesc.RenderTarget[i].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		blendDesc.RenderTarget[i].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+		blendDesc.RenderTarget[i].BlendOp = D3D11_BLEND_OP_ADD;
+		blendDesc.RenderTarget[i].SrcBlendAlpha = D3D11_BLEND_ONE;
+		blendDesc.RenderTarget[i].DestBlendAlpha = D3D11_BLEND_ZERO;
+		blendDesc.RenderTarget[i].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+		blendDesc.RenderTarget[i].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+	}
 	float blendFactor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 	m_D3DDevice->CreateBlendState(&blendDesc, &m_BlendStateAlphaBlend);
 
-	blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_ONE;
-	blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_ZERO;
-	blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
-	blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
-	blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
-	blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+	for (int i = 0; i < 8; i++) {
+		blendDesc.RenderTarget[i].SrcBlend = D3D11_BLEND_ONE;
+		blendDesc.RenderTarget[i].DestBlend = D3D11_BLEND_ZERO;
+		blendDesc.RenderTarget[i].BlendOp = D3D11_BLEND_OP_ADD;
+		blendDesc.RenderTarget[i].SrcBlendAlpha = D3D11_BLEND_ONE;
+		blendDesc.RenderTarget[i].DestBlendAlpha = D3D11_BLEND_ZERO;
+		blendDesc.RenderTarget[i].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+		blendDesc.RenderTarget[i].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+		
+	}
 	m_D3DDevice->CreateBlendState(&blendDesc, &m_BlendStateNone);
-
-	blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
-	blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
-	blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
-	blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
-	blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
-	blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+	for (int i = 0; i < 8; i++) {
+		blendDesc.RenderTarget[i].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		blendDesc.RenderTarget[i].DestBlend = D3D11_BLEND_ONE;
+		blendDesc.RenderTarget[i].BlendOp = D3D11_BLEND_OP_ADD;
+		blendDesc.RenderTarget[i].SrcBlendAlpha = D3D11_BLEND_ONE;
+		blendDesc.RenderTarget[i].DestBlendAlpha = D3D11_BLEND_ZERO;
+		blendDesc.RenderTarget[i].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+		blendDesc.RenderTarget[i].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+		
+	}
 	m_D3DDevice->CreateBlendState(&blendDesc, &m_BlendStateAdd);
-
-	blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
-	blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
-	blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_REV_SUBTRACT;
-	blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
-	blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
-	blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+	for (int i = 0; i < 8; i++) {
+		blendDesc.RenderTarget[i].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		blendDesc.RenderTarget[i].DestBlend = D3D11_BLEND_ONE;
+		blendDesc.RenderTarget[i].BlendOp = D3D11_BLEND_OP_REV_SUBTRACT;
+		blendDesc.RenderTarget[i].SrcBlendAlpha = D3D11_BLEND_ONE;
+		blendDesc.RenderTarget[i].DestBlendAlpha = D3D11_BLEND_ZERO;
+		blendDesc.RenderTarget[i].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+		blendDesc.RenderTarget[i].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+		
+	}
 	m_D3DDevice->CreateBlendState(&blendDesc, &m_BlendStateSubtract);
-
 	// アルファブレンド設定
 	SetBlendState(BLEND_MODE_ALPHABLEND);
 
@@ -201,7 +209,7 @@ HRESULT CDxRenderer::InitRenderer()
 	ZeroMemory(&depthStencilDesc, sizeof(depthStencilDesc));
 	depthStencilDesc.DepthEnable = TRUE;
 	depthStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-	depthStencilDesc.DepthFunc = D3D11_COMPARISON_LESS;
+	depthStencilDesc.DepthFunc = D3D11_COMPARISON_LESS_EQUAL;
 	depthStencilDesc.StencilEnable = FALSE;
 
 	m_D3DDevice->CreateDepthStencilState(&depthStencilDesc, &m_DepthStateEnable);//深度有効ステート
@@ -401,65 +409,65 @@ void CDxRenderer::SetCullingMode(CULL_MODE cm)
 
 void CDxRenderer::SetAlphaTestEnable(BOOL flag)
 {
-	D3D11_BLEND_DESC blendDesc;
-	ZeroMemory(&blendDesc, sizeof(blendDesc));
-	
-	if (flag)
-		blendDesc.AlphaToCoverageEnable = TRUE;
-	else
-		blendDesc.AlphaToCoverageEnable = FALSE;
+	//D3D11_BLEND_DESC blendDesc;
+	//ZeroMemory(&blendDesc, sizeof(blendDesc));
+	//
+	//if (flag)
+	//	blendDesc.AlphaToCoverageEnable = TRUE;
+	//else
+	//	blendDesc.AlphaToCoverageEnable = FALSE;
 
-	blendDesc.IndependentBlendEnable = FALSE;
-	blendDesc.RenderTarget[0].BlendEnable = TRUE;
+	//blendDesc.IndependentBlendEnable = FALSE;
+	//blendDesc.RenderTarget[0].BlendEnable = TRUE;
 
-	switch (m_BlendStateParam)
-	{
-	case BLEND_MODE_NONE:
-		blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_ONE;
-		blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_ZERO;
-		blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
-		blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
-		blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
-		blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-		blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
-		break;				   
-	case BLEND_MODE_ALPHABLEND:
-		blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
-		blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
-		blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
-		blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
-		blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
-		blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-		blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
-		break;				  
-	case BLEND_MODE_ADD:	  
-		blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
-		blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
-		blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
-		blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
-		blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
-		blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-		blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
-		break;
-	case BLEND_MODE_SUBTRACT:
-		blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
-		blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
-		blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_REV_SUBTRACT;
-		blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
-		blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
-		blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-		blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
-		break;
-	}
+	//switch (m_BlendStateParam)
+	//{
+	//case BLEND_MODE_NONE:
+	//	blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_ONE;
+	//	blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_ZERO;
+	//	blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+	//	blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+	//	blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+	//	blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+	//	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+	//	break;				   
+	//case BLEND_MODE_ALPHABLEND:
+	//	blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+	//	blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+	//	blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+	//	blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+	//	blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+	//	blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+	//	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+	//	break;				  
+	//case BLEND_MODE_ADD:	  
+	//	blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+	//	blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
+	//	blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+	//	blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+	//	blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+	//	blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+	//	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+	//	break;
+	//case BLEND_MODE_SUBTRACT:
+	//	blendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+	//	blendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
+	//	blendDesc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_REV_SUBTRACT;
+	//	blendDesc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+	//	blendDesc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+	//	blendDesc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+	//	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+	//	break;
+	//}
 
-	float blendFactor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
-	ID3D11BlendState* blendState = NULL;
-	m_D3DDevice->CreateBlendState(&blendDesc, &blendState);
-	m_ImmediateContext->OMSetBlendState(blendState, 0, 0xffffffff);
-	
+	//float blendFactor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	//ID3D11BlendState* blendState = NULL;
+	//m_D3DDevice->CreateBlendState(&blendDesc, &blendState);
+	//m_ImmediateContext->OMSetBlendState(blendState, 0, 0xffffffff);
+	//
 
-	if (blendState != NULL)
-		blendState->Release();
+	//if (blendState != NULL)
+	//	blendState->Release();
 }
 
 void CDxRenderer::SetSamplerState(FILTER_MODE fm, ADDRESS_MODE am)
@@ -559,6 +567,7 @@ void CDxRenderer::SetRenderTargetByDeffard()
 
 void CDxRenderer::SetRenderTargetIntermediateBuffer(bool enableDepthStencil)
 {
+	SetBlendState(BLEND_MODE_ALPHABLEND);
 	if (enableDepthStencil) 
 	{
 		m_ImmediateContext->OMSetRenderTargets(1, &m_IntermediateRtv, m_DepthStencilView.Get());
@@ -574,7 +583,7 @@ void CDxRenderer::SetRenderTargetIntermediateBuffer(bool enableDepthStencil)
 
 void CDxRenderer::ClearBackBuffor(bool enableDepthStencilClear)
 {
-	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	m_ImmediateContext->ClearRenderTargetView(m_BackBuffer.Get(), ClearColor);
 
 	if (enableDepthStencilClear) 
@@ -584,7 +593,7 @@ void CDxRenderer::ClearBackBuffor(bool enableDepthStencilClear)
 
 void CDxRenderer::ClearRenderTextureSceneByDeferred(bool enableDepthStencilClear)
 {
-	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	for (int i = 0; i < RENDER_TARGET_NUM; i++) {
 		m_ImmediateContext->ClearRenderTargetView(m_RenderTargets[i].RenderTargetView.Get(), ClearColor);
 	}
@@ -594,7 +603,7 @@ void CDxRenderer::ClearRenderTextureSceneByDeferred(bool enableDepthStencilClear
 
 void CDxRenderer::ClearIntermediateBuffer(bool enableDepthStencilClear)
 {
-	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	m_ImmediateContext->ClearRenderTargetView(m_IntermediateRtv, ClearColor);
 
 	if (enableDepthStencilClear) 
@@ -621,5 +630,5 @@ void CDxRenderer::SetViewPortDefault()
 
 void CDxRenderer::Present()
 {
-	m_SwapChain->Present(0, 0);
+	m_SwapChain->Present(1, 0);
 }

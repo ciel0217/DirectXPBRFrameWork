@@ -29,6 +29,7 @@ public:
 	void Init()override;
 	void Uninit()override;
 	void Update()override;
+	//void Draw()override{}
 
 	void DrawByCubeMap();
 	ID3D11ShaderResourceView* GetEnvSkyMap() { return m_CubeMap->GetShaderResourceView(); }

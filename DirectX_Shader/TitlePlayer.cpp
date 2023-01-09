@@ -3,7 +3,7 @@
 #include "Math/Quaternion.h"
 #include "FrameWork/Manager/ManagerScene.h"
 #include "CloseBlackBG.h"
-#include "TestScene.h"
+#include "TitleScene.h"
 #include "FrameWork/Manager/audio.h"
 
 
@@ -27,18 +27,7 @@ void TitlePlayer::Init()
 	m_Speed = 5.0f;
 	m_IsActive = false;
 
-	m_ParticleEmitter = ManagerScene::GetInstance()->GetCurrentScene()->AddGameObject<ParticleEmitter>(e3DObject);
-
-	m_ParticleEmitter->SetParent(this);
-	m_ParticleEmitter->SetInitPosition(m_Position);
-	m_ParticleEmitter->SetLimitLifeTime(200);
-	m_ParticleEmitter->SetGenerateTime(6);
-	m_ParticleEmitter->SetParticleScale(D3DXVECTOR3(15.0f, 15.0f, 15.0f));
-	m_ParticleEmitter->SetSpeed(0.3f);
-	m_ParticleEmitter->SetColor(D3DXCOLOR(0.0f, 1.0f, 1.0f, 1.0f));
-	m_ParticleEmitter->SetTextureName("asset/texture/index.png");
-	m_ParticleEmitter->Config();
-	m_ParticleEmitter->Init();
+	
 }
 
 void TitlePlayer::Uninit()
@@ -63,7 +52,7 @@ void TitlePlayer::Update()
 		}
 
 		if (ManagerScene::GetInstance()->GetCurrentScene()->GetGameObject<CloseBlackBG>(e2DObject)->GetCanNext()) {
-			ManagerScene::GetInstance()->ChangeScene<TestScene>();
+			ManagerScene::GetInstance()->ChangeScene<TitleScene>();
 		}
 
 
@@ -77,5 +66,18 @@ void TitlePlayer::SetActive(bool active)
 	m_Audio->Play();
 	m_IsActive = active;
 
+	m_ParticleEmitter = ManagerScene::GetInstance()->GetCurrentScene()->AddGameObject<ParticleEmitter>(e3DObject);
+
+	m_ParticleEmitter->SetParent(this);
 	
+	m_ParticleEmitter->SetInitPosition(m_Position);
+	m_ParticleEmitter->SetLimitLifeTime(200);
+	m_ParticleEmitter->SetGenerateTime(0);
+	m_ParticleEmitter->SetParticleScale(D3DXVECTOR3(6.0f, 6.0f, 5.0f));
+	m_ParticleEmitter->SetSpeed(-0.3f);
+	m_ParticleEmitter->SetColor(D3DXCOLOR(0.5f, 0.5f, 0.5f, 0.8f));
+	m_ParticleEmitter->SetAddColor(D3DXCOLOR(0.0f, 0.0f, 0.0f, -0.008f));
+	m_ParticleEmitter->SetTextureName("asset/texture/index.png");
+	m_ParticleEmitter->Config();
+	m_ParticleEmitter->Init();
 }

@@ -108,12 +108,16 @@ void CameraRenderer::DrawRenderer(std::list<CommonProcess *> gameobject[])
 	CDxRenderer::GetRenderer()->SetDepthEnable(true);
 
 	CDxRenderer::GetRenderer()->SetViewPortDefault();
+	
 	CDxRenderer::GetRenderer()->ClearRenderTextureSceneByDeferred(true);
+	CDxRenderer::GetRenderer()->ClearIntermediateBuffer(true);
+	CDxRenderer::GetRenderer()->ClearBackBuffor(true);
+
 	CDxRenderer::GetRenderer()->SetRenderTargetByDeffard();
 
 	m_GBufferPass->Draw(m_GameObjectsOpacity);
 	
-	CDxRenderer::GetRenderer()->ClearIntermediateBuffer(false);
+	//CDxRenderer::GetRenderer()->ClearIntermediateBuffer(false);
 	CDxRenderer::GetRenderer()->SetRenderTargetIntermediateBuffer(false);
 
 	m_LightPass->SetLightCBuffer();
@@ -123,12 +127,16 @@ void CameraRenderer::DrawRenderer(std::list<CommonProcess *> gameobject[])
 
 	
 	CDxRenderer::GetRenderer()->SetRenderTargetIntermediateBuffer(true);
-	DrawTransparent();
+	m_Sky->Draw();
+	
 
-	CDxRenderer::GetRenderer()->ClearBackBuffor(false);
+	//CDxRenderer::GetRenderer()->ClearBackBuffor(false);
+	CDxRenderer::GetRenderer()->SetRenderTargetBackBuffor(false);
+	
+	m_ToneMapPass->Draw();
 	CDxRenderer::GetRenderer()->SetRenderTargetBackBuffor(true);
 
-	m_ToneMapPass->Draw();
+	DrawTransparent();
 	
 	Draw2D();
 	DrawPostProcessToAll();
@@ -158,9 +166,13 @@ void CameraRenderer::CalcRenderingOrder(std::list<CommonProcess *> gameobject[])
 			{
 				m_GameObjects2D.push_back(obj);
 			}
-			else
+			else if(obj->GetRenderQueue() == DrawObjectRenderQueue::eTransparent)
 			{
 				m_GameObjectsTransparent.push_back(obj);
+			}
+			else 
+			{
+				m_Sky = obj;
 			}
 		}
 	}

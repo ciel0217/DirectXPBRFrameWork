@@ -45,6 +45,7 @@ private:
 	std::list<CommonProcess *> m_GameObjects2D;			//2dのオブジェクト
 	std::list<CommonProcess *> m_GameObjectsOpacity;		//不透明なオブジェクト
 	std::list<CommonProcess *> m_GameObjectsTransparent;	//透明 or 半透明なオブジェクト
+	CommonProcess* m_Sky;
 
 	std::list<CPostProcess *> m_PostProcessToOpacity;
 	std::list<CPostProcess *> m_PostProcessToAll;

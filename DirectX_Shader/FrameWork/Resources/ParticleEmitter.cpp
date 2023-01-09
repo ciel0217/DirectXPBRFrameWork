@@ -4,6 +4,7 @@
 #include "Particle.h"
 #include <algorithm>
 #include "../../Math/Quaternion.h"
+#include "../Manager/ManagerScene.h"
 
 void ParticleEmitter::Config()
 {
@@ -27,8 +28,12 @@ void ParticleEmitter::Update()
 {
 	if (m_Parent)
 	{
-		m_Position = m_Parent->GetPosition();
+		
 		m_Rotation = m_Parent->GetRotation();
+
+		D3DXVECTOR3 axisz = Transform(UnitZ, m_Rotation);
+
+		m_Position = m_Parent->GetPosition() + (axisz * -20.0f);
 	}
 
 	m_FrameCount++;
@@ -67,6 +72,15 @@ void ParticleEmitter::Update()
 
 void ParticleEmitter::Draw()
 {
+	D3DXVECTOR3 pos = ManagerScene::GetInstance()->GetCurrentSceneCamera()->GetPosition();
+	std::sort(m_ParticleList.begin(), m_ParticleList.end(), [pos](CommonProcess* a, CommonProcess* b) 
+		{
+			D3DXVECTOR3 a_dis = pos - a->GetPosition();
+			D3DXVECTOR3 b_dis = pos - b->GetPosition();
+
+			return D3DXVec3LengthSq(&a_dis) > D3DXVec3LengthSq(&b_dis); 
+		});
+
 	for (auto particle : m_ParticleList) 
 	{
 		particle->Draw();

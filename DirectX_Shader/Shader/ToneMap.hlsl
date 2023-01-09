@@ -50,7 +50,7 @@ Output_PS PS_main(Output_VS vs)
 	Output_PS output;
 	
 	float4 color = g_IntermediateTex.Sample(g_SamplerState, vs.texcoord);
-	float luminance = CalcLuminance(color);
+	float luminance = CalcLuminance(color.rgb);
 	float reinhard = luminance / (luminance + 1);
 	output.color = float4(color.rgb * (reinhard / luminance), color.w);
 

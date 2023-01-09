@@ -168,7 +168,7 @@ void Sprite2D::Draw2D(D3DXVECTOR3 pos, D3DXVECTOR3 wh, D3DXCOLOR color, D3DXVECT
 void Sprite2D::DrawBillboard(ID3D11ShaderResourceView * texture, D3DXVECTOR3 pos, D3DXVECTOR3 wh, D3DXCOLOR color,
 	D3DXVECTOR2 uv, D3DXVECTOR2 uv_wh, MATERIAL_CBUFFER MATERIAL_CBUFFER)
 {
-	CDxRenderer::GetRenderer()->SetAlphaTestEnable(true);
+	//CDxRenderer::GetRenderer()->SetAlphaTestEnable(true);
 	Camera* camera = ManagerScene::GetInstance()->GetCurrentSceneCamera();
 	
 	{
@@ -259,5 +259,5 @@ void Sprite2D::DrawBillboard(ID3D11ShaderResourceView * texture, D3DXVECTOR3 pos
 
 	CDxRenderer::GetRenderer()->UnbindShaderResourceView(0);
 
-	CDxRenderer::GetRenderer()->SetAlphaTestEnable(false);
+	//CDxRenderer::GetRenderer()->SetAlphaTestEnable(false);
 }

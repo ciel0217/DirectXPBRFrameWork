@@ -4,7 +4,7 @@
 
 void TitleLogo::Config()
 {
-	m_TextureName = "asset/texture/index.png";
+	m_TextureName = "asset/texture/titlelogo.png";
 	ManagerTexture::LoadTexture(m_TextureName);
 
 	m_Shader = ManagerShader::GetShader("Shader/2DTexture.hlsl");
